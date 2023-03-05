@@ -12,23 +12,25 @@ function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     return (
-        <div>
+        <div className="login-container">
             <h2>Create your account</h2>
-            <form>
-                <span className="p-float-label">
-                    <InputText placeholder="Your Club Number" value={club_number} onChange={(e) => setClubNumber(e.target.value)} />
+            <form className="login-form">
+                <span className="p-input-icon-left">
+                    <i className="pi pi-id-card"></i>
+                    <InputText className="p-inputtext-lg" placeholder="Your Club Number" keyfilter="int" value={club_number} onChange={(e) => setClubNumber(e.target.value)} />
                 </span>
-                <span className="p-float-label">
-                    <InputText placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                <span className="p-input-icon-left">
+                    <i className="pi pi-envelope"></i>
+                    <InputText className="p-inputtext-lg" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 </span>
-                <span className="card flex justify-content-center">
+                <span className="p-inputtext-lg">
                     <Password placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} toggleMask />
                 </span>
-                <span className="card flex justify-content-center">
-                    <Password placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} toggleMask />
+                <span className="p-inputtext-lg">
+                    <Password placeholder="Reenter password" value={password} onChange={(e) => setPassword(e.target.value)} toggleMask />
                 </span>
-                <Button label="Sign up" type="submit"  />
-                <div><a href="/login">Already have account?</a></div>
+                <Button className="btn-primary" label="SIGN UP" type="submit"  />
+                <span><a href="/login">Already have account?</a></span>
             </form>
         </div>
     )

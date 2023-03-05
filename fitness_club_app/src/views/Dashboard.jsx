@@ -7,7 +7,7 @@ function Dashboard() {
             <h1>
                 Welcome to Fitness Club Dashboard
             </h1>
-            
+
             <div><a href="/login">Log out</a></div>
         </div>
     )

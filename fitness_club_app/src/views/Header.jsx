@@ -1,9 +1,9 @@
-import {Outlet} from "react-router-dom";
+import illustartion from "../assets/logo.jpg";
 
 function Header() {
     return (
-        <div>
-            <img src="../assets/logo.jpg" alt={"Fitness Club Logo"} title={"Fitness Club Logo"}/>
+        <div className="main-container">
+            <img src={illustartion} />
         </div>
         )
 }
