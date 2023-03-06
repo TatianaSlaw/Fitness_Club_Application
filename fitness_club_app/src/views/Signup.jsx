@@ -6,6 +6,7 @@ import 'primereact/resources/themes/saga-blue/theme.css';   // theme
 import 'primereact/resources/primereact.css';                       // core css
 import 'primeicons/primeicons.css';                                 // icons
 import 'primeflex/primeflex.css';
+import supabase from '../services/supabase';
 
 function Login() {
     const [club_number, setClubNumber] = useState('');
