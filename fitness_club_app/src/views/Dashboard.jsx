@@ -27,16 +27,15 @@ function Dashboard() {
         });
     };
     const handleLogout = async () => {
-        // let { error } = await supabase.auth.signOut();
-        //
-        // if (error) {
-        //     showError(error.message);
-        //     return;
-        // }
-        //
-        // localStorage.removeItem('userData');
-        navigate('/login')
+        let { error } = await supabase.auth.signOut();
 
+        if (error) {
+            showError(error.message);
+            return;
+        }
+
+        localStorage.removeItem('userData');
+        navigate('/login')
     }
 
     const [isUserLogged, setUserLogged] = useState(null);
@@ -52,9 +51,7 @@ function Dashboard() {
                     Fitness Club Dashboard
                 </h1>
                 <div>
-                    {/*<Button onSubmit={handleLogout} onClick={(e) => showSuccess(e,'You are logged out your account')} className="btn-primary" label="LOG OUT"  type="submit"  />*/}
                     <Button onClick={handleLogout}  className="btn-primary" label="LOG OUT"  type="submit"  />
-
                 </div>
             </div>
             )

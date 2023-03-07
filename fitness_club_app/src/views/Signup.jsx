@@ -5,11 +5,6 @@ import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 
-import 'primereact/resources/themes/saga-blue/theme.css';   // theme
-import 'primereact/resources/primereact.css';                       // core css
-import 'primeicons/primeicons.css';                                 // icons
-import 'primeflex/primeflex.css';
-
 import supabase from '../services/supabase';
 
 function Signup() {

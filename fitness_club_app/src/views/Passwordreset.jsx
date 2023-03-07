@@ -1,13 +1,13 @@
 import React, { useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
-import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 
-import supabase from '../services/supabase';
+import supabase from "../services/supabase.js";
 
-function Login() {
+function PasswordReset() {
+
     const toast = useRef(null);
     const navigate = useNavigate();
     const { pathname } = useLocation();
@@ -29,36 +29,29 @@ function Login() {
         });
     };
 
-    const handleSignup = async (event) => {
+    const handlePasswordReset = async (event) => {
         event.preventDefault();
 
         const email = emailRef.current.value;
-        const password = passwordRef.current.value;
-
-        let { data, error } = await supabase.auth.signInWithPassword({
-            email: email,
-            password: password,
-        });
+        let {data, error} = await supabase.auth.resetPasswordForEmail(email);
 
         if (data.user) {
-            showSuccess('You have logged in your account');
+            showSuccess('We sent you email to reset your password');
             navigate("/");
         }
 
         if (error) {
             showError(error.message);
         }
-    };
+    }
 
     const emailRef = useRef(null);
-    const passwordRef = useRef(null);
-
 
     return (
         <div className="login-container">
             <Toast ref={toast} />
-            <h2>Log in to your account</h2>
-            <form className="login-form" onSubmit={handleSignup}>
+            <h2>Reset your password</h2>
+            <form className="login-form" onSubmit={handlePasswordReset}>
                 <span className="p-input-icon-left">
                     <i className="pi pi-envelope"></i>
                     <InputText
@@ -66,19 +59,10 @@ function Login() {
                         placeholder="Your email"
                         ref={emailRef} />
                 </span>
-                <span className="p-input-icon-right p-inputtext-lg">
-                    {/*<Password placeholder="Password" ref={passwordRef} feedback={false} toggleMask />*/}
-                    <InputText
-                        className="p-inputtext p-component p-filled p-password-input"
-                        placeholder="Password"
-                        type="password"
-                        ref={passwordRef} />
-                    <i className="pi pi-eye"></i>
-                </span>
-                <span><a href="/reset">Forgot password?</a></span>
+
                 <Button
                     className="btn-primary"
-                    label="LOG IN"
+                    label="RESET PASSWORD"
                     type="submit" />
                 <span><a href="/signup">Haven’t account?</a></span>
             </form>
@@ -86,4 +70,4 @@ function Login() {
     )
 }
 
-export default Login;
+export default PasswordReset;
