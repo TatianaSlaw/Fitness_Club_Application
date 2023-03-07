@@ -1,21 +1,63 @@
-import {Outlet} from "react-router-dom";
-import {Button} from "primereact/button";
-import React from "react";
+import {useLocation, useNavigate} from "react-router-dom";
+import React, {useEffect, useRef, useState} from "react";
+import { Button } from "primereact/button";
+import { Toast } from 'primereact/toast';
+
 import supabase from '../services/supabase';
 
 function Dashboard() {
+    const toast = useRef(null);
+    const navigate = useNavigate();
+    const {pathname} = useLocation();
+    const showSuccess = (e,msg) => {
+        e.preventDefault();
+        toast.current.show({
+            severity:'success',
+            summary: 'Success',
+            detail: msg,
+            life: 3000,
+        });
+    };
+    const showError = (e,msg) => {
+        toast.current.show({
+            severity:'error',
+            summary: 'Error',
+            detail: msg,
+            life: 3000,
+        });
+    };
+    const handleLogout = async () => {
+        // let { error } = await supabase.auth.signOut();
+        //
+        // if (error) {
+        //     showError(error.message);
+        //     return;
+        // }
+        //
+        // localStorage.removeItem('userData');
+        navigate('/login')
+
+    }
+
+    const [isUserLogged, setUserLogged] = useState(null);
+
+    useEffect(() => {
+        setUserLogged(!!localStorage.getItem('user.data'))
+    },[])
+
     return (
-        <div className="main-container">
+            <div className="main-container">
+                <Toast ref={toast} />
+                <h1>
+                    Fitness Club Dashboard
+                </h1>
+                <div>
+                    {/*<Button onSubmit={handleLogout} onClick={(e) => showSuccess(e,'You are logged out your account')} className="btn-primary" label="LOG OUT"  type="submit"  />*/}
+                    <Button onClick={handleLogout}  className="btn-primary" label="LOG OUT"  type="submit"  />
 
-            <h1>
-                Fitness Club Dashboard
-            </h1>
-
-            <div>
-                <i className="pi pi-sign-out"></i>
-                <a href="/login">Log out</a></div>
-        </div>
-    )
+                </div>
+            </div>
+            )
 }
 
 export default Dashboard;

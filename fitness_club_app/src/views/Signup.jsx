@@ -1,4 +1,5 @@
-import React, { useState, useRef } from "react";
+import React, { useRef } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
@@ -13,48 +14,93 @@ import supabase from '../services/supabase';
 
 function Signup() {
     const toast = useRef(null);
+    const navigate = useNavigate();
+    const { pathname } = useLocation();
 
-    const showSuccess = (e,msg) => {
-        e.preventDefault();
+    const showSuccess = (msg) => {
         toast.current.show({
-            severity:'success',
+            severity: 'success',
             summary: 'Success',
             detail: msg,
             life: 3000,
         });
     };
-    const showError = (e,msg) => {
+    const showError = (msg) => {
         toast.current.show({
-            severity:'error',
+            severity: 'error',
             summary: 'Error',
             detail: msg,
             life: 3000,
         });
     };
 
-    const [club_number, setClubNumber] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const handleSignup = async (event) => {
+        event.preventDefault();
+
+        const email = emailRef.current.value;
+        const password = passwordRef.current.value;
+        const password2 = password2Ref.current.value;
+
+
+        if (password !== password2) {
+            showError("Passwords don't match");
+            return;
+        }
+
+        let { data, error } = await supabase.auth.signUp({
+            email: email,
+            password: password,
+        });
+
+        if (data.user) {
+            showSuccess('Congratulations! You have successfully signed up for your account');
+            navigate("/");
+        }
+
+        if (error) {
+            showError(error.message);
+        }
+    };
+
+    const emailRef = useRef(null);
+    const passwordRef = useRef(null);
+    const password2Ref = useRef(null);
+
     return (
         <div className="login-container">
             <Toast ref={toast} />
             <h2>Create your account</h2>
-            <form className="login-form">
-                <span className="p-input-icon-left">
-                    <i className="pi pi-id-card"></i>
-                    <InputText className="p-inputtext-lg" placeholder="Your Club Number" keyfilter="int" value={club_number} onChange={(e) => setClubNumber(e.target.value)} />
-                </span>
+            <form className="login-form" onSubmit={handleSignup}>
                 <span className="p-input-icon-left">
                     <i className="pi pi-envelope"></i>
-                    <InputText className="p-inputtext-lg" placeholder="Your email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                    <InputText
+                        className="p-inputtext-lg"
+                        placeholder="Your email"
+                        ref={emailRef} />
                 </span>
-                <span className="p-inputtext-lg">
-                    <Password placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} toggleMask />
+                <span className="p-input-icon-right p-inputtext-lg">
+                    {/*<Password placeholder="Password" ref={passwordRef} feedback={false} toggleMask />*/}
+                    <InputText
+                        className="p-inputtext p-component p-filled p-password-input"
+                        placeholder="Password"
+                        type="password"
+                        ref={passwordRef} />
+                    <i className="pi pi-eye"></i>
                 </span>
-                <span className="p-inputtext-lg">
-                    <Password placeholder="Reenter password" value={password} onChange={(e) => setPassword(e.target.value)} toggleMask />
+                <span className="p-input-icon-right p-inputtext-lg">
+                    {/*<Password placeholder="Reenter password" ref={password2Ref} feedback={false} toggleMask />*/}
+                    <InputText
+                        className="p-inputtext p-component p-filled p-password-input"
+                        placeholder="Reenter password"
+                        type="password"
+                        ref={password2Ref} />
+                    <i className="pi pi-eye"></i>
                 </span>
-                <Button onClick={(e) => showSuccess(e,'Congratulations! You have successfully sign up your account')} className="btn-primary" label="SIGN UP" type="submit"  />
+                <Button
+                    //onClick={(e) => showSuccess('Congratulations! You have successfully sign up your account')}
+                    className="btn-primary"
+                    label="SIGN UP"
+                    type="submit" />
                 <span><a href="/login">Already have account?</a></span>
             </form>
         </div>
