@@ -5,7 +5,7 @@ import { Toast } from 'primereact/toast';
 
 import supabase from '../services/supabase';
 
-function Dashboard() {
+function Trainer() {
     const toast = useRef(null);
     const navigate = useNavigate();
     const {pathname} = useLocation();
@@ -26,6 +26,11 @@ function Dashboard() {
             life: 3000,
         });
     };
+
+    const handleNewMember = () => {
+        navigate('/addnew')
+    }
+
     const handleLogout = async () => {
         let { error } = await supabase.auth.signOut();
 
@@ -50,11 +55,25 @@ function Dashboard() {
                 <h1>
                     Fitness Club Dashboard
                 </h1>
+
+                <div className="p-input-icon-right">
+                    <Button className="btn-primary" severity="info" outlined label="Select club member" />
+                    <i className="pi pi-user-edit" style={{ fontSize: '1.5rem',  color: "#2699f7" }}></i>
+                </div>
+                <div className="p-input-icon-right">
+                    <Button onClick={handleNewMember} className="btn-primary" severity="info" outlined label="Add new club member" />
+                    <i className="pi pi-user" style={{ fontSize: '1.5rem', color: "#2699f7" }}></i>
+                </div>
+                <div className="p-input-icon-right">
+                    <Button className="btn-primary" severity="info" outlined label="Add info for the coming holidays" />
+                    <i className="pi pi-calendar-plus" style={{ fontSize: '1.5rem', color: "#2699f7" }}></i>
+                </div>
                 <div>
                     <Button onClick={handleLogout}  className="btn-primary" label="LOG OUT"  type="submit"  />
                 </div>
+
             </div>
             )
 }
 
-export default Dashboard;
+export default Trainer;

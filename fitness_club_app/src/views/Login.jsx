@@ -41,6 +41,7 @@ function Login() {
         });
 
         if (data.user) {
+            localStorage.setItem('userData', JSON.stringify(data.user));
             showSuccess('You have logged in your account');
             navigate("/");
         }
@@ -52,7 +53,6 @@ function Login() {
 
     const emailRef = useRef(null);
     const passwordRef = useRef(null);
-
 
     return (
         <div className="login-container">

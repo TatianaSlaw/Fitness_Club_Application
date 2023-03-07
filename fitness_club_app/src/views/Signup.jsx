@@ -92,7 +92,6 @@ function Signup() {
                     <i className="pi pi-eye"></i>
                 </span>
                 <Button
-                    //onClick={(e) => showSuccess('Congratulations! You have successfully sign up your account')}
                     className="btn-primary"
                     label="SIGN UP"
                     type="submit" />
