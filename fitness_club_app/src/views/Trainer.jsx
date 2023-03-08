@@ -31,6 +31,10 @@ function Trainer() {
         navigate('/addnew')
     }
 
+    const handleClubInfo = () => {
+        navigate('/openhours')
+    }
+
     const handleLogout = async () => {
         let { error } = await supabase.auth.signOut();
 
@@ -61,15 +65,26 @@ function Trainer() {
                     <i className="pi pi-user-edit" style={{ fontSize: '1.5rem',  color: "#2699f7" }}></i>
                 </div>
                 <div className="p-input-icon-right">
-                    <Button onClick={handleNewMember} className="btn-primary" severity="info" outlined label="Add new club member" />
+                    <Button onClick={handleNewMember}
+                            className="btn-primary"
+                            severity="info"
+                            outlined
+                            label="Add new club member" />
                     <i className="pi pi-user" style={{ fontSize: '1.5rem', color: "#2699f7" }}></i>
                 </div>
                 <div className="p-input-icon-right">
-                    <Button className="btn-primary" severity="info" outlined label="Add info for the coming holidays" />
+                    <Button onClick={handleClubInfo}
+                            className="btn-primary"
+                            severity="info"
+                            outlined
+                            label="Add info for the coming holidays" />
                     <i className="pi pi-calendar-plus" style={{ fontSize: '1.5rem', color: "#2699f7" }}></i>
                 </div>
                 <div>
-                    <Button onClick={handleLogout}  className="btn-primary" label="LOG OUT"  type="submit"  />
+                    <Button onClick={handleLogout}
+                            className="btn-primary"
+                            label="LOG OUT"
+                            type="submit"  />
                 </div>
 
             </div>

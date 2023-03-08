@@ -129,7 +129,7 @@ function AddNewMember() {
                     className="btn-primary"
                     label="ADD NEW MEMBER"
                     type="submit" />
-                <span><a href="/">Return to main dashboard</a></span>
+                <span className="text-center"><a href="/">Return to main dashboard</a></span>
             </form>
         </div>
     )

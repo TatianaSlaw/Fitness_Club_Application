@@ -55,13 +55,20 @@
 
   .p-inputtext {
     width: 100%;
+    margin-left: 0;
   }
 
   .input_label {
     background-color: #2699f7;
     color: white;
+    margin-right: 0;
   }
+
   .btn-primary {
     margin-bottom: 20px;
+  }
+
+  .text-center {
+    text-align: center;
   }
 }

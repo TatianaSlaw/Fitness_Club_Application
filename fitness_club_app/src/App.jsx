@@ -15,6 +15,7 @@ import 'primereact/resources/primereact.css';
 import 'primeicons/primeicons.css';
 import 'primeflex/primeflex.css';
 import AddNewmember from "./views/Addmember.jsx";
+import AddOpenHours from "./views/Addopenhours.jsx";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
             <Route path="/admin" element={<Administrator />} />
             <Route path="/addnew" element={<AddNewMember />} />
             <Route path="/member" element={<Member />} />
+            <Route path="/openhours" element={<AddOpenHours />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/reset" element={<PasswordReset />} />
