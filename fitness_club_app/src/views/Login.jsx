@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import { InputText } from "primereact/inputtext";
 import { Password } from 'primereact/password';
 import { Button } from 'primereact/button';
@@ -43,7 +43,7 @@ function Login() {
         if (data.user) {
             localStorage.setItem('userData', JSON.stringify(data.user));
             showSuccess('You have logged in your account');
-            navigate("/");
+            navigate("/trainer");
         }
 
         if (error) {
@@ -58,6 +58,7 @@ function Login() {
         <div className="login-container">
             <Toast ref={toast} />
             <h2>Log in to your account</h2>
+            <Outlet />
             <form className="login-form" onSubmit={handleSignup}>
                 <span className="p-input-icon-left">
                     <i className="pi pi-envelope"></i>

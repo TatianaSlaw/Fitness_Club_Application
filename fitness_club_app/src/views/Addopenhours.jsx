@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
@@ -67,7 +67,7 @@ function AddOpenHours() {
                     className="btn-primary"
                     label="ADD INFO"
                     type="submit" />
-                <span className="text-center"><a href="/">Return to main dashboard</a></span>
+                <span className="text-center"><a href="/trainer">Return to main dashboard</a></span>
             </form>
         </div>
     )

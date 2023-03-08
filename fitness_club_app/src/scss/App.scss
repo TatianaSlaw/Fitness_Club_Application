@@ -42,6 +42,20 @@
       margin: 10px 0;
     }
   }
+  .p-dropdown {
+    border-color: #2699f7;
+    width: 80vw;
+
+    span {
+      margin: 0;
+      padding: 12px;
+      font-size: 1rem;
+    }
+  }
+
+  .p-float-label {
+    margin: 0;
+  }
 }
 .newmember-container {
 
@@ -72,3 +86,9 @@
     text-align: center;
   }
 }
+
+
+  .btn-edit {
+    margin-top: 0 !important;
+    margin-bottom: 30px;
+  }

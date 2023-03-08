@@ -6,7 +6,7 @@ import { Toast } from 'primereact/toast';
 
 import supabase from '../services/supabase';
 
-function AddNewMember() {
+function AddTestResults() {
     const toast = useRef(null);
     const navigate = useNavigate();
 
@@ -50,8 +50,8 @@ function AddNewMember() {
 
         if (data.user) {
             //localStorage.setItem('userData', JSON.stringify(data.user));
-            showSuccess('You have add new member');
-            navigate("/");
+            showSuccess('You have add new data');
+            navigate("/trainer");
         }
 
         if (error) {
@@ -127,7 +127,7 @@ function AddNewMember() {
                 </div>
                 <Button
                     className="btn-primary"
-                    label="ADD NEW MEMBER"
+                    label="ADD TEST RESULTS"
                     type="submit" />
                 <span className="text-center"><a href="/trainer">Return to main dashboard</a></span>
             </form>
@@ -135,4 +135,4 @@ function AddNewMember() {
     )
 }
 
-export default AddNewMember;
+export default AddTestResults;

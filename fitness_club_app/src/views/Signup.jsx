@@ -49,7 +49,7 @@ function Signup() {
 
         if (data.user) {
             showSuccess('Congratulations! You have successfully signed up for your account');
-            navigate("/");
+            navigate("/trainer");
         }
 
         if (error) {
