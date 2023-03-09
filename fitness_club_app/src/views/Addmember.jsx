@@ -10,7 +10,6 @@ function AddNewMember() {
     const toast = useRef(null);
     const navigate = useNavigate();
 
-
     const showSuccess = (msg) => {
         toast.current.show({
             severity: 'success',
@@ -38,19 +37,28 @@ function AddNewMember() {
         const date_bd = date_bdRef.current.value;
         const height = heightRef.current.value;
 
-        let { data, error } = await supabase.auth.signInWithPassword({
-            club_number: club_number,
-            name: name,
-            surname: surname,
-            phone: phone,
-            date_bd: date_bd,
-            height: height,
-            user_type: "client",
-        });
+        // Sprawdź, czy klub o podanym numerze już istnieje
+        const { data: existingMember } = await supabase
+            .from('Clients')
+            .select('*')
+            .eq('club_number', club_number)
+            .single();
 
-        if (data.user) {
-            //localStorage.setItem('userData', JSON.stringify(data.user));
-            showSuccess('You have add new member');
+        // Jeśli klub już istnieje, wyświetl błąd
+        if (existingMember) {
+            showError('This club member already exists');
+            return;
+        }
+
+
+        const { data, error } = await supabase
+            .from('Clients')
+            .insert([
+                { club_number: club_number, name: name, surname: surname, email: null, phone: phone, password: null, date_bd: date_bd, height: height, user_type: "client" }
+            ]);
+
+        if (data) {
+            showSuccess('You have added a new member');
             navigate("/");
         }
 
@@ -74,65 +82,62 @@ function AddNewMember() {
                 <div>
                     <span className="input_label">Club number</span>
                     <span className="p-inputtext-lg">
-                    <InputText
-                        className="p-inputtext-lg "
-                        placeholder="Club number"
-                        ref={club_numberRef} />
-                </span>
+                        <InputText
+                            className="p-inputtext-lg "
+                            placeholder="Club number"
+                            ref={club_numberRef} />
+                    </span>
                 </div>
                 <div>
                     <span className="input_label">First name</span>
                     <span className="p-inputtext-lg">
-                    <InputText
-                        className="p-inputtext-lg"
-                        placeholder="First name"
-                        ref={nameRef} />
-                </span>
+                        <InputText
+                            className="p-inputtext-lg"
+                            placeholder="First name"
+                            ref={nameRef} />
+                    </span>
                 </div>
                 <div>
                     <span className="input_label">Last name</span>
                     <span className="p-inputtext-lg">
-                    <InputText
-                        className="p-inputtext-lg"
-                        placeholder="Last name"
-                        ref={surnameRef} />
-                </span>
+                        <InputText
+                            className="p-inputtext-lg"
+                            placeholder="Last name"
+                            ref={surnameRef} />
+                    </span>
                 </div>
                 <div>
                     <span className="input_label">Mobile phone</span>
                     <span className="p-inputtext-lg">
-                    <InputText
-                        className="p-inputtext-lg"
-                        placeholder="Mobile phone"
-                        ref={phoneRef} />
-                </span>
+                        <InputText
+                            className="p-inputtext-lg"
+                            placeholder="Mobile phone"
+                            ref={phoneRef} />
+                    </span>
                 </div>
                 <div>
                     <span className="input_label">Date of birth</span>
                     <span className="p-inputtext-lg">
-                    <InputText
-                        className="p-inputtext-lg"
-                        placeholder="Date of birth"
-                        ref={date_bdRef} />
+                        <InputText
+                            className="p-inputtext-lg"
+                            placeholder="Date of birth"
+                            ref={date_bdRef} />
                 </span>
                 </div>
                 <div>
-                    <span className="input_label">Height</span>
+                    <span className="input_label">Height (cm)</span>
                     <span className="p-inputtext-lg">
                     <InputText
                         className="p-inputtext-lg"
-                        placeholder="Height"
+                        placeholder="Height (cm)"
                         ref={heightRef} />
                 </span>
                 </div>
-                <Button
-                    className="btn-primary"
-                    label="ADD NEW MEMBER"
-                    type="submit" />
+                <Button type="submit" label="Add member" className="btn-primary" />
                 <span className="text-center"><a href="/trainer">Return to main dashboard</a></span>
             </form>
         </div>
-    )
+    );
 }
 
 export default AddNewMember;
