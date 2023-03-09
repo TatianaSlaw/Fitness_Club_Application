@@ -43,7 +43,7 @@
     }
   }
   .p-dropdown {
-    border-color: #2699f7;
+    border-color: $primary-color;
     width: 80vw;
 
     span {
@@ -73,7 +73,7 @@
   }
 
   .input_label {
-    background-color: #2699f7;
+    background-color: $primary-color;
     color: white;
     margin-right: 0;
   }
@@ -100,12 +100,59 @@
     text-align: left;
     font-size: 1.5rem;
     font-weight: bold;
-    color: #2699f7;
+    color: $primary-color;
     width: 80vw;
     margin-top: 40px;
 
     .test_value {
-      color: #393939;
+      color: $text-color;
       font-weight: normal;
+    }
+  }
+
+//---AddTestresults Compnent---
+
+  .section_header {
+    color: $primary-color;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 40px 0;
+  }
+
+  .results_table {
+    font-size: 1.3rem;
+    text-align: center;
+
+    thead th {
+      background-color: $primary-color;
+      color: white;
+      font-weight: normal;
+    }
+
+    tbody tr:nth-child(odd) {
+      background-color: #ccc;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #eee;
+    }
+
+    th, td {
+      padding: 3px;
+    }
+
+  }
+
+  .prev_results {
+    display: inline-block;
+    width: 60vw;
+  }
+
+  .last_results {
+    max-width: 20vw;
+    display: inline-block;
+
+    .p-inputtext {
+      width: 20vw;
     }
   }

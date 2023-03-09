@@ -37,19 +37,16 @@ function AddNewMember() {
         const date_bd = date_bdRef.current.value;
         const height = heightRef.current.value;
 
-        // Sprawdź, czy klub o podanym numerze już istnieje
         const { data: existingMember } = await supabase
             .from('Clients')
             .select('*')
             .eq('club_number', club_number)
             .single();
 
-        // Jeśli klub już istnieje, wyświetl błąd
         if (existingMember) {
             showError('This club member already exists');
             return;
         }
-
 
         const { data, error } = await supabase
             .from('Clients')
@@ -59,7 +56,7 @@ function AddNewMember() {
 
         if (data) {
             showSuccess('You have added a new member');
-            navigate("/");
+            navigate("/trainer");
         }
 
         if (error) {
@@ -85,6 +82,8 @@ function AddNewMember() {
                         <InputText
                             className="p-inputtext-lg "
                             placeholder="Club number"
+                            keyfilter="int"
+                            maxLength={4}
                             ref={club_numberRef} />
                     </span>
                 </div>
@@ -120,7 +119,7 @@ function AddNewMember() {
                     <span className="p-inputtext-lg">
                         <InputText
                             className="p-inputtext-lg"
-                            placeholder="Date of birth"
+                            placeholder="Date of birth yyyy-mm-dd"
                             ref={date_bdRef} />
                 </span>
                 </div>
