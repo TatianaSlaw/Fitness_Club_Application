@@ -64,7 +64,7 @@ function AddTestResults() {
                         .slice()
                         .sort((a, b) => new Date(b) - new Date(a))
                         .map((date) => (
-                            <th key={date}>
+                            <th key={date} colSpan={2}>
                                 {new Date(date).toLocaleDateString("pl-PL", {
                                     year: "2-digit",
                                     month: "2-digit",
@@ -82,7 +82,7 @@ function AddTestResults() {
                         .sort((a, b) => new Date(b) - new Date(a))
                         .map((date) => {
                             const result = results.find((r) => r.test_date === date);
-                            return <td key={date}>{result ? result.day_mp : ""}</td>;
+                            return <td key={date} colSpan={2}>{result ? result.day_mp : ""}</td>;
                         })}
                 </tr>
                 <tr>
@@ -90,15 +90,25 @@ function AddTestResults() {
                     {dates
                         .slice()
                         .sort((a, b) => new Date(b) - new Date(a))
-                        .map((date) => {
+                        .map((date, index, array) => {
                             const result = results.find((r) => r.test_date === date);
-                            return (
-                                <td key={date}>
-                                    {result && result.weight ? result.weight : ""}
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.weight - nextResult.weight;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.weight ? result.weight : ""}</td>,
+                                index < array.length - 1 && <td className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
                                 </td>
-                            );
+
+                            ];
                         })}
                 </tr>
+
                 </tbody>
             </table>
 
@@ -174,7 +184,7 @@ function AddTestResults() {
             <span className="last_results">
                 <InputText
                     ref={test_dateRef}
-                    placeholder="Date yyyy-mm-dd"
+                    placeholder="yyyy-mm-dd"
                 />
                 <InputText
                     ref={day_mpRef}
@@ -185,6 +195,7 @@ function AddTestResults() {
                 <InputText
                     ref={weightRef}
                     keyfilter="num"
+                    placeholder="Weight"
                 />
             </span>
 
