@@ -54,7 +54,7 @@ function AddNewMember() {
                 { club_number: club_number, name: name, surname: surname, email: null, phone: phone, password: null, date_bd: date_bd, height: height, user_type: "client" }
             ]);
 
-        if (data) {
+        if (!error) {
             showSuccess('You have added a new member');
             navigate("/trainer");
         }

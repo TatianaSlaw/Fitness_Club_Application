@@ -1,8 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import { InputText } from "primereact/inputtext";
+import { InputNumber } from 'primereact/inputnumber';
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
+
 import supabase from "../services/supabase";
+
 import { useNavigate } from "react-router-dom";
 import ShowMemberInfo from "./Showmemberinfo.jsx";
 
@@ -57,32 +60,48 @@ function AddTestResults() {
                 <thead>
                 <tr>
                     <th>Test Date</th>
-                    {dates.map((date) => (
-                        <th key={date}>{date}</th>
-                    ))}
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date) => (
+                            <th key={date}>
+                                {new Date(date).toLocaleDateString("pl-PL", {
+                                    year: "2-digit",
+                                    month: "2-digit",
+                                    day: "2-digit",
+                                })}
+                            </th>
+                        ))}
                 </tr>
                 </thead>
                 <tbody>
                 <tr>
                     <td>Day MP</td>
-                    {dates.map((date) => {
-                        const result = results.find((r) => r.test_date === date);
-                        return <td key={date}>{result ? result.day_mp : ""}</td>;
-                    })}
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date) => {
+                            const result = results.find((r) => r.test_date === date);
+                            return <td key={date}>{result ? result.day_mp : ""}</td>;
+                        })}
                 </tr>
                 <tr>
                     <td>Weight</td>
-                    {dates.map((date) => {
-                        const result = results.find((r) => r.test_date === date);
-                        return (
-                            <td key={date}>
-                                {result && result.weight ? result.weight : ""}
-                            </td>
-                        );
-                    })}
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date) => {
+                            const result = results.find((r) => r.test_date === date);
+                            return (
+                                <td key={date}>
+                                    {result && result.weight ? result.weight : ""}
+                                </td>
+                            );
+                        })}
                 </tr>
                 </tbody>
             </table>
+
         );
     }
 
@@ -114,8 +133,6 @@ function AddTestResults() {
             .select("club_number, test_date, day_mp, weight")
             .eq("club_number", clubNumber);
 
-        console.log(data);
-        console.log(error);
 
         if (error) {
             console.error(error);
@@ -157,7 +174,7 @@ function AddTestResults() {
             <span className="last_results">
                 <InputText
                     ref={test_dateRef}
-                    placeholder="Date"
+                    placeholder="Date yyyy-mm-dd"
                 />
                 <InputText
                     ref={day_mpRef}
@@ -167,8 +184,7 @@ function AddTestResults() {
                 />
                 <InputText
                     ref={weightRef}
-                    keyfilter="int"
-                    placeholder="Weight"
+                    keyfilter="num"
                 />
             </span>
 

@@ -28,6 +28,10 @@
 
   .p-inputtext {
     width: 80vw;
+
+    @media only screen and (min-width: 992px) {
+      max-width: 600px;
+    };
   }
 
   .btn-primary {
@@ -37,6 +41,10 @@
     font-size: 18px;
     background-color: $primary-color;
     font-weight: bold;
+
+    @media only screen and (min-width: 992px) {
+     max-width: 600px;
+    };
 
     span {
       margin: 10px 0;
@@ -65,11 +73,19 @@
     font-size: 1.25rem;
     padding: 0.5rem 0.625rem;
     margin: 0;
+
+    @media only screen and (min-width: 992px) {
+      max-width: 300px;
+    };
   }
 
   .p-inputtext {
     width: 100%;
     margin-left: 0;
+
+    @media only screen and (min-width: 992px) {
+      max-width: 600px;
+    };
   }
 
   .input_label {
@@ -80,6 +96,16 @@
 
   .btn-primary {
     margin-bottom: 20px;
+
+      span {
+        @media only screen and (min-width: 992px) {
+          max-width: 600px;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+      };
+    };
+
   }
 }
 
@@ -110,7 +136,7 @@
     }
   }
 
-//---AddTestresults Compnent---
+//---AddTestResults Component---
 
   .section_header {
     color: $primary-color;

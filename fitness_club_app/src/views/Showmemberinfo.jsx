@@ -7,16 +7,18 @@ function ShowMemberInfo(props) {
 
     useEffect(() => {
         async function fetchClients() {
-            const { data, error } = await supabase
-                .from('Clients')
-                .select("id, club_number, name, surname, date_bd, height")
-                .eq('club_number', clubNumber);
+            if (clubNumber.length === 4) {
+                const { data, error } = await supabase
+                    .from('Clients')
+                    .select("id, club_number, name, surname, date_bd, height")
+                    .eq('club_number', clubNumber);
 
-            if (error) {
-                console.error(error);
-                setErrorMessage("Error occurred while fetching data");
-            } else {
-                setClients(data);
+                if (error) {
+                    console.error(error);
+                    setErrorMessage("Error occurred while fetching data");
+                } else {
+                    setClients(data);
+                }
             }
         }
 
