@@ -128,7 +128,8 @@ function AddTestResults() {
                 { club_number: clubNumber, test_date: test_date, day_mp: day_mp, weight: weight }
             ]);
 
-        if (data) {
+
+        if (!error) {
             showSuccess('You have added a new test data');
         }
 
