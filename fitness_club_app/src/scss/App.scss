@@ -186,6 +186,7 @@
 
 .negative {
   color: green;
+  font-size: 1rem;
 
   &:before {
     content: "-";
@@ -194,6 +195,7 @@
 
 .positive {
   color: red;
+  font-size: 1rem;
 
   &:before {
     content: "+";

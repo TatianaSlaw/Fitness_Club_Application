@@ -1,10 +1,10 @@
-import illustartion from "../assets/logo.jpg";
+import { ReactSVG } from "react-svg";
 
 function Header() {
 
     return (
         <div className="main-container">
-            <img src={illustartion} />
+            <ReactSVG src="src/assets/logo.svg" />
         </div>
         )
 }
