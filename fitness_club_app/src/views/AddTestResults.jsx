@@ -202,6 +202,52 @@ function AddTestResults() {
                             ];
                         })}
                 </tr>
+                <tr>
+                    <th>Waist</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.waist - nextResult.waist;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.waist ? result.waist : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th>Hips</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.hips - nextResult.hips;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.hips ? result.hips : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
 
                 </tbody>
             </table>
@@ -219,12 +265,24 @@ function AddTestResults() {
         const forearm = forearmRef.current.value;
         const above_bust = above_bustRef.current.value;
         const bust = bustRef.current.value;
+        const waist = waistRef.current.value;
+        const hips = hipsRef.current.value;
         //
 
         const { data, error } = await supabase
             .from('Results')
             .insert([
-                { club_number: clubNumber, test_date: test_date, day_mp: day_mp, weight: weight, neck: neck, forearm:forearm, above_bust: above_bust, bust: bust }
+                { club_number: clubNumber,
+                    test_date: test_date,
+                    day_mp: day_mp,
+                    weight: weight,
+                    neck: neck,
+                    forearm:forearm,
+                    above_bust: above_bust,
+                    bust: bust,
+                    waist: waist,
+                    hips: hips
+                }
             ]);
 
 
@@ -240,7 +298,7 @@ function AddTestResults() {
     async function fetchResults() {
         const { data, error } = await supabase
             .from("Results")
-            .select("club_number, test_date, day_mp, weight, neck, forearm, above_bust, bust")
+            .select("club_number, test_date, day_mp, weight, neck, forearm, above_bust, bust, waist, hips")
             .eq("club_number", clubNumber);
 
 
@@ -261,7 +319,9 @@ function AddTestResults() {
     const forearmRef = useRef(null);
     const above_bustRef = useRef(null);
     const bustRef = useRef(null);
-    //above_bust
+    const waistRef = useRef(null);
+    const hipsRef = useRef(null);
+    //
     const tabIndex = useTabIndex();
 
     return (
@@ -323,8 +383,18 @@ function AddTestResults() {
                     keyfilter="num"
                     placeholder="Bust"
                 />
+                <InputText
+                    ref={waistRef}
+                    keyfilter="num"
+                    placeholder="Waist"
+                />
+                <InputText
+                    ref={hipsRef}
+                    keyfilter="num"
+                    placeholder="Hips"
+                />
 
-                {/*above_bust*/}
+                {/*hips*/}
             </span>
 
             <div className="main-container">
