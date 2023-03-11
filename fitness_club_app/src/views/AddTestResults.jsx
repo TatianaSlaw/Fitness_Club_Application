@@ -131,6 +131,29 @@ function AddTestResults() {
                         ];
                     })}
                 </tr>
+                <tr>
+                    <th>Forearm</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.forearm - nextResult.forearm;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.forearm ? result.forearm : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
 
                 </tbody>
             </table>
@@ -145,11 +168,12 @@ function AddTestResults() {
         const day_mp = day_mpRef.current.value;
         const weight = weightRef.current.value;
         const neck = neckRef.current.value;
+        const forearm = forearmRef.current.value;
 
         const { data, error } = await supabase
             .from('Results')
             .insert([
-                { club_number: clubNumber, test_date: test_date, day_mp: day_mp, weight: weight, neck: neck }
+                { club_number: clubNumber, test_date: test_date, day_mp: day_mp, weight: weight, neck: neck, forearm:forearm }
             ]);
 
 
@@ -165,7 +189,7 @@ function AddTestResults() {
     async function fetchResults() {
         const { data, error } = await supabase
             .from("Results")
-            .select("club_number, test_date, day_mp, weight, neck")
+            .select("club_number, test_date, day_mp, weight, neck, forearm")
             .eq("club_number", clubNumber);
 
 
@@ -183,6 +207,7 @@ function AddTestResults() {
     const day_mpRef = useRef(null);
     const weightRef  = useRef(null);
     const neckRef  = useRef(null);
+    const forearmRef = useRef(null);
     const tabIndex = useTabIndex();
 
     return (
@@ -228,6 +253,11 @@ function AddTestResults() {
                     ref={neckRef}
                     keyfilter="num"
                     placeholder="Neck"
+                />
+                <InputText
+                    ref={forearmRef}
+                    keyfilter="num"
+                    placeholder="Forearm"
                 />
             </span>
 
