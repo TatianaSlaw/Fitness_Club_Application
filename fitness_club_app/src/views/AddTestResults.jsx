@@ -155,6 +155,54 @@ function AddTestResults() {
                         })}
                 </tr>
 
+                <tr>
+                    <th>Above bust</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.above_bust - nextResult.above_bust;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.above_bust ? result.above_bust : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+
+                <tr>
+                    <th>Bust</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.bust - nextResult.bust;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.bust ? result.bust : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+
                 </tbody>
             </table>
 
@@ -169,11 +217,14 @@ function AddTestResults() {
         const weight = weightRef.current.value;
         const neck = neckRef.current.value;
         const forearm = forearmRef.current.value;
+        const above_bust = above_bustRef.current.value;
+        const bust = bustRef.current.value;
+        //
 
         const { data, error } = await supabase
             .from('Results')
             .insert([
-                { club_number: clubNumber, test_date: test_date, day_mp: day_mp, weight: weight, neck: neck, forearm:forearm }
+                { club_number: clubNumber, test_date: test_date, day_mp: day_mp, weight: weight, neck: neck, forearm:forearm, above_bust: above_bust, bust: bust }
             ]);
 
 
@@ -189,7 +240,7 @@ function AddTestResults() {
     async function fetchResults() {
         const { data, error } = await supabase
             .from("Results")
-            .select("club_number, test_date, day_mp, weight, neck, forearm")
+            .select("club_number, test_date, day_mp, weight, neck, forearm, above_bust, bust")
             .eq("club_number", clubNumber);
 
 
@@ -208,6 +259,9 @@ function AddTestResults() {
     const weightRef  = useRef(null);
     const neckRef  = useRef(null);
     const forearmRef = useRef(null);
+    const above_bustRef = useRef(null);
+    const bustRef = useRef(null);
+    //above_bust
     const tabIndex = useTabIndex();
 
     return (
@@ -259,6 +313,18 @@ function AddTestResults() {
                     keyfilter="num"
                     placeholder="Forearm"
                 />
+                <InputText
+                    ref={above_bustRef}
+                    keyfilter="num"
+                    placeholder="Above bust"
+                />
+                <InputText
+                    ref={bustRef}
+                    keyfilter="num"
+                    placeholder="Bust"
+                />
+
+                {/*above_bust*/}
             </span>
 
             <div className="main-container">
