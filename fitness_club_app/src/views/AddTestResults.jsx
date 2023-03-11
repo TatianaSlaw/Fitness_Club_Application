@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { InputText } from "primereact/inputtext";
-import { InputNumber } from 'primereact/inputnumber';
+import { useTabIndex } from 'react-tabindex';
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 
@@ -59,7 +59,7 @@ function AddTestResults() {
             <table className="results_table">
                 <thead>
                 <tr>
-                    <th>Test Date</th>
+                    <th className="pin">Test Date</th>
                     {dates
                         .slice()
                         .sort((a, b) => new Date(b) - new Date(a))
@@ -76,7 +76,7 @@ function AddTestResults() {
                 </thead>
                 <tbody>
                 <tr>
-                    <td>Day MP</td>
+                    <th className="row_header">Day MP</th>
                     {dates
                         .slice()
                         .sort((a, b) => new Date(b) - new Date(a))
@@ -86,7 +86,7 @@ function AddTestResults() {
                         })}
                 </tr>
                 <tr>
-                    <td>Weight</td>
+                    <th>Weight</th>
                     {dates
                         .slice()
                         .sort((a, b) => new Date(b) - new Date(a))
@@ -101,12 +101,35 @@ function AddTestResults() {
                             }
                             return [
                                 <td key={date}>{result && result.weight ? result.weight : ""}</td>,
-                                index < array.length - 1 && <td className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
                                     {difference !== null ? Math.abs(difference) : ""}
                                 </td>
 
                             ];
                         })}
+                </tr>
+                <tr>
+                <th>Neck</th>
+                {dates
+                    .slice()
+                    .sort((a, b) => new Date(b) - new Date(a))
+                    .map((date, index, array) => {
+                        const result = results.find((r) => r.test_date === date);
+                        let difference = "";
+                        if (index < array.length - 1) {
+                            const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                            if (result && nextResult) {
+                                difference = result.neck - nextResult.neck;
+                            }
+                        }
+                        return [
+                            <td key={date}>{result && result.neck ? result.neck : ""}</td>,
+                            index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                {difference !== null ? Math.abs(difference) : ""}
+                            </td>
+
+                        ];
+                    })}
                 </tr>
 
                 </tbody>
@@ -121,11 +144,12 @@ function AddTestResults() {
         const test_date = test_dateRef.current.value;
         const day_mp = day_mpRef.current.value;
         const weight = weightRef.current.value;
+        const neck = neckRef.current.value;
 
         const { data, error } = await supabase
             .from('Results')
             .insert([
-                { club_number: clubNumber, test_date: test_date, day_mp: day_mp, weight: weight }
+                { club_number: clubNumber, test_date: test_date, day_mp: day_mp, weight: weight, neck: neck }
             ]);
 
 
@@ -141,7 +165,7 @@ function AddTestResults() {
     async function fetchResults() {
         const { data, error } = await supabase
             .from("Results")
-            .select("club_number, test_date, day_mp, weight")
+            .select("club_number, test_date, day_mp, weight, neck")
             .eq("club_number", clubNumber);
 
 
@@ -158,6 +182,8 @@ function AddTestResults() {
     const test_dateRef = useRef(null);
     const day_mpRef = useRef(null);
     const weightRef  = useRef(null);
+    const neckRef  = useRef(null);
+    const tabIndex = useTabIndex();
 
     return (
         <div>
@@ -179,7 +205,7 @@ function AddTestResults() {
             )}
             <ShowMemberInfo clubNumber={clubNumber} />
             <div className="section_header">Tests Results</div>
-            <span className="prev_results">
+            <span className="prev_results " role="region" aria-label="test results table" tabIndex={tabIndex} >
                 {results.length > 0 ? renderResultsTable() : null}
             </span>
             <span className="last_results">
@@ -197,6 +223,11 @@ function AddTestResults() {
                     ref={weightRef}
                     keyfilter="num"
                     placeholder="Weight"
+                />
+                <InputText
+                    ref={neckRef}
+                    keyfilter="num"
+                    placeholder="Neck"
                 />
             </span>
 

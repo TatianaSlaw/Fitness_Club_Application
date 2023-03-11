@@ -7,23 +7,19 @@
   align-items: center;
 
   h2{
-    margin: 1.8rem 0;
-  }
-
-  img {
-    margin: 1.25rem 0;
+    margin: 7vh 0;
   }
 
   .pi {
-    margin-right: 0.6rem;
+    margin-right: 1vw;
   }
 
   .p-input-icon-right > i {
-    margin-top: -.3rem;
+    margin-top: -0.5vh;
   }
 
   span {
-    margin: 1rem 0;
+    margin: 5vh 0;
   }
 
   .p-inputtext {
@@ -148,7 +144,7 @@
     font-size: 1.3rem;
     text-align: center;
 
-    thead th {
+    th {
       background-color: $primary-color;
       color: white;
       font-weight: normal;
@@ -164,6 +160,44 @@
 
     th, td {
       padding: 0.26rem;
+      background-clip: padding-box;
+      scroll-snap-align: start;
+    }
+
+    thead {
+      z-index: 1000;
+      position: relative;
+    }
+
+    thead th {
+      position: sticky;
+      top: 0;
+      border-top: 0;
+      background-clip: padding-box;
+    }
+
+    thead th.pin {
+      left: 0;
+      z-index: 1001;
+      border-left: 0;
+    }
+
+    tbody th {
+      background-clip: padding-box;
+      border-left: 0;
+    }
+
+    tbody {
+      z-index: 10;
+      position: relative;
+    }
+
+    tbody th {
+      position: sticky;
+      left: 0;
+    }
+    .row_header {
+      min-width: 95px;
     }
 
   }
@@ -172,6 +206,8 @@
     display: inline-block;
     width: 60vw;
     vertical-align: top;
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
   }
 
   .last_results {
