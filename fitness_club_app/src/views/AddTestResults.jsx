@@ -478,7 +478,99 @@ function AddTestResults() {
                             ];
                         })}
                 </tr>
-                {/*waist_fold*/}
+                <tr>
+                    <th className="icon-caliper">Back thigh</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.back_thigh_fold - nextResult.back_thigh_fold;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.back_thigh_fold ? result.back_thigh_fold : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="icon-caliper">Outer thigh</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.outer_thigh_fold - nextResult.outer_thigh_fold;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.outer_thigh_fold ? result.outer_thigh_fold : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="icon-caliper">Inner thigh</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.inner_thigh_fold - nextResult.inner_thigh_fold;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.inner_thigh_fold ? result.inner_thigh_fold : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="icon-caliper">Front thigh</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.front_thigh_fold - nextResult.front_thigh_fold;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.front_thigh_fold ? result.front_thigh_fold : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                {/*outer_thigh_fold*/}
                 </tbody>
             </table>
 
@@ -507,7 +599,12 @@ function AddTestResults() {
         const upper_back_fold = upper_back_foldRef.current.value;
         const lower_back_fold = lower_back_foldRef.current.value;
         const waist_fold = waist_foldRef.current.value;
-        //waist_fold
+        const back_thigh_fold = back_thigh_foldRef.current.value;
+        const outer_thigh_fold = back_thigh_foldRef.current.value;
+        const inner_thigh_fold = back_thigh_foldRef.current.value;
+        const front_thigh_fold = back_thigh_foldRef.current.value;
+
+        //outer_thigh_fold
 
         const { data, error } = await supabase
             .from('Results')
@@ -531,7 +628,12 @@ function AddTestResults() {
                     lower_press_fold: lower_press_fold,
                     upper_back_fold: upper_back_fold,
                     lower_back_fold: lower_back_fold,
-                    waist_fold: waist_fold
+                    waist_fold: waist_fold,
+                    back_thigh_fold: back_thigh_fold,
+                    outer_thigh_fold: outer_thigh_fold,
+                    inner_thigh_fold: inner_thigh_fold,
+                    front_thigh_fold: front_thigh_fold
+
                 }
             ]);
 
@@ -548,7 +650,7 @@ function AddTestResults() {
     async function fetchResults() {
         const { data, error } = await supabase
             .from("Results")
-            .select("club_number, test_date, day_mp, weight, neck, forearm, above_bust, bust, waist, hips, thigh, lower_leg, forearm_fold, biceps_fold, triceps_fold, upper_press_fold, lower_press_fold, upper_back_fold, lower_back_fold, waist_fold")
+            .select("club_number, test_date, day_mp, weight, neck, forearm, above_bust, bust, waist, hips, thigh, lower_leg, forearm_fold, biceps_fold, triceps_fold, upper_press_fold, lower_press_fold, upper_back_fold, lower_back_fold, waist_fold, back_thigh_fold, outer_thigh_fold, inner_thigh_fold, front_thigh_fold")
             .eq("club_number", clubNumber);
 
 
@@ -581,7 +683,12 @@ function AddTestResults() {
     const upper_back_foldRef = useRef(null);
     const lower_back_foldRef = useRef(null);
     const waist_foldRef = useRef(null);
-    //waist_fold
+    const back_thigh_foldRef = useRef(null);
+    const outer_thigh_foldRef = useRef(null);
+    const inner_thigh_foldRef = useRef(null);
+    const front_thigh_foldRef = useRef(null);
+
+    //outer_thigh_fold
     const tabIndex = useTabIndex();
 
     return (
@@ -703,8 +810,28 @@ function AddTestResults() {
                     keyfilter="num"
                     placeholder="Waist"
                 />
+                <InputText
+                    ref={back_thigh_foldRef}
+                    keyfilter="num"
+                    placeholder="Back thigh"
+                />
+                <InputText
+                    ref={outer_thigh_foldRef}
+                    keyfilter="num"
+                    placeholder="Outer thigh"
+                />
+                <InputText
+                ref={inner_thigh_foldRef}
+                keyfilter="num"
+                placeholder="Inner thigh"
+                />
+                <InputText
+                    ref={front_thigh_foldRef}
+                    keyfilter="num"
+                    placeholder="Front thigh"
+                />
 
-                {/*waist_fold*/}
+                {/*outer_thigh_fold*/}
             </span>
 
             <div className="main-container">
