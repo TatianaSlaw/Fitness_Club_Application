@@ -294,7 +294,122 @@ function AddTestResults() {
                             ];
                         })}
                 </tr>
+                <tr>
+                    <th className="icon-caliper">Forearm</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.forearm_fold - nextResult.forearm_fold;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.forearm_fold ? result.forearm_fold : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
 
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="icon-caliper">Biceps</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.biceps_fold - nextResult.biceps_fold;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.biceps_fold ? result.biceps_fold : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="icon-caliper">Triceps</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.triceps_fold - nextResult.triceps_fold;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.triceps_fold ? result.triceps_fold : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="icon-caliper">Upper press</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.upper_press_fold - nextResult.upper_press_fold;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.upper_press_fold ? result.upper_press_fold : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="icon-caliper">Lower press</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.lower_press_fold - nextResult.lower_press_fold;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.lower_press_fold ? result.lower_press_fold : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                {/*lower_press_fold*/}
                 </tbody>
             </table>
 
@@ -315,7 +430,12 @@ function AddTestResults() {
         const hips = hipsRef.current.value;
         const thigh = hipsRef.current.value;
         const lower_leg = lower_legRef.current.value;
-        //lower_leg
+        const forearm_fold = forearm_foldRef.current.value;
+        const biceps_fold = biceps_foldRef.current.value;
+        const triceps_fold = triceps_foldRef.current.value;
+        const upper_press_fold = upper_press_foldRef.current.value;
+        const lower_press_fold = lower_press_foldRef.current.value;
+        //lower_press_fold
 
         const { data, error } = await supabase
             .from('Results')
@@ -331,7 +451,12 @@ function AddTestResults() {
                     waist: waist,
                     hips: hips,
                     thigh: thigh,
-                    lower_leg: lower_leg
+                    lower_leg: lower_leg,
+                    forearm_fold: forearm_fold,
+                    biceps_fold: biceps_fold,
+                    triceps_fold: triceps_fold,
+                    upper_press_fold: upper_press_fold,
+                    lower_press_fold: lower_press_fold
                 }
             ]);
 
@@ -348,7 +473,7 @@ function AddTestResults() {
     async function fetchResults() {
         const { data, error } = await supabase
             .from("Results")
-            .select("club_number, test_date, day_mp, weight, neck, forearm, above_bust, bust, waist, hips, thigh, lower_leg")
+            .select("club_number, test_date, day_mp, weight, neck, forearm, above_bust, bust, waist, hips, thigh, lower_leg, forearm_fold, biceps_fold, triceps_fold, upper_press_fold, lower_press_fold")
             .eq("club_number", clubNumber);
 
 
@@ -373,7 +498,12 @@ function AddTestResults() {
     const hipsRef = useRef(null);
     const thighRef = useRef(null);
     const lower_legRef = useRef(null);
-    //
+    const forearm_foldRef = useRef(null);
+    const biceps_foldRef = useRef(null);
+    const triceps_foldRef = useRef(null);
+    const upper_press_foldRef = useRef(null);
+    const lower_press_foldRef = useRef(null);
+    //lower_press_fold
     const tabIndex = useTabIndex();
 
     return (
@@ -455,8 +585,33 @@ function AddTestResults() {
                     keyfilter="num"
                     placeholder="Lower leg"
                 />
+                <InputText
+                    ref={forearm_foldRef}
+                    keyfilter="num"
+                    placeholder="Forearm"
+                />
+                <InputText
+                    ref={biceps_foldRef}
+                    keyfilter="num"
+                    placeholder="Biceps"
+                />
+                <InputText
+                    ref={triceps_foldRef}
+                    keyfilter="num"
+                    placeholder="Triceps"
+                />
+                <InputText
+                    ref={upper_press_foldRef}
+                    keyfilter="num"
+                    placeholder="Upper press"
+                />
+                <InputText
+                    ref={lower_press_foldRef}
+                    keyfilter="num"
+                    placeholder="Lower press"
+                />
 
-                {/*lower_leg*/}
+                {/*lower_press_fold*/}
             </span>
 
             <div className="main-container">
