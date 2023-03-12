@@ -200,7 +200,7 @@
     }
 
     .row_header {
-      min-width: 150px;
+      min-width: 155px;
     }
 
     th.icon-wieght {
@@ -222,7 +222,6 @@
     }
 
     th.icon-caliper {
-      background-color: #393939;
 
       &:after {
         content: url("../assets/caliper.png");
@@ -248,7 +247,6 @@
         content: "+";
       }
     }
-
   }
 
   .prev_results {

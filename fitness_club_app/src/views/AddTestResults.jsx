@@ -570,7 +570,213 @@ function AddTestResults() {
                             ];
                         })}
                 </tr>
-                {/*outer_thigh_fold*/}
+                <tr>
+                    <th className="icon-caliper">Lower leg</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.lower_leg_fold - nextResult.lower_leg_fold;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.lower_leg_fold ? result.lower_leg_fold : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="row_header">Metabolic age</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.metabolic_age - nextResult.metabolic_age;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.metabolic_age ? result.metabolic_age : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="row_header">Muscle mass, %</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.muscle_mass - nextResult.muscle_mass;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.muscle_mass ? result.muscle_mass : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="row_header">Body water, %</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.body_water - nextResult.body_water;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.body_water ? result.body_water : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="row_header">Fat, %</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.fat - nextResult.fat;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.fat ? result.fat : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="row_header">Bone</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.bone - nextResult.bone;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.bone ? result.bone : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="row_header">Visceral fat</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.visceral_fat - nextResult.visceral_fat;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.visceral_fat ? result.visceral_fat : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="row_header">BMI</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.bmi - nextResult.bmi;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.bmi ? result.bmi : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="row_header">Physique rating</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.physique_rating - nextResult.physique_rating;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.physique_rating ? result.physique_rating : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
                 </tbody>
             </table>
 
@@ -603,8 +809,15 @@ function AddTestResults() {
         const outer_thigh_fold = back_thigh_foldRef.current.value;
         const inner_thigh_fold = back_thigh_foldRef.current.value;
         const front_thigh_fold = back_thigh_foldRef.current.value;
-
-        //outer_thigh_fold
+        const lower_leg_fold = lower_leg_foldRef.current.value;
+        const metabolic_age = metabolic_ageRef.current.value;
+        const muscle_mass = muscle_massRef.current.value;
+        const body_water = body_waterRef.current.value;
+        const fat = fatRef.current.value;
+        const bone = boneRef.current.value;
+        const visceral_fat = visceral_fatRef.current.value;
+        const bmi = bmiRef.current.value;
+        const physique_rating = physique_ratingRef.current.value;
 
         const { data, error } = await supabase
             .from('Results')
@@ -632,8 +845,16 @@ function AddTestResults() {
                     back_thigh_fold: back_thigh_fold,
                     outer_thigh_fold: outer_thigh_fold,
                     inner_thigh_fold: inner_thigh_fold,
-                    front_thigh_fold: front_thigh_fold
-
+                    front_thigh_fold: front_thigh_fold,
+                    lower_leg_fold: lower_leg_fold,
+                    metabolic_age: metabolic_age,
+                    muscle_mass: muscle_mass,
+                    body_water: body_water,
+                    fat: fat,
+                    bone: bone,
+                    visceral_fat: visceral_fat,
+                    bmi: bmi,
+                    physique_rating: physique_rating
                 }
             ]);
 
@@ -650,7 +871,7 @@ function AddTestResults() {
     async function fetchResults() {
         const { data, error } = await supabase
             .from("Results")
-            .select("club_number, test_date, day_mp, weight, neck, forearm, above_bust, bust, waist, hips, thigh, lower_leg, forearm_fold, biceps_fold, triceps_fold, upper_press_fold, lower_press_fold, upper_back_fold, lower_back_fold, waist_fold, back_thigh_fold, outer_thigh_fold, inner_thigh_fold, front_thigh_fold")
+            .select("club_number, test_date, day_mp, weight, neck, forearm, above_bust, bust, waist, hips, thigh, lower_leg, forearm_fold, biceps_fold, triceps_fold, upper_press_fold, lower_press_fold, upper_back_fold, lower_back_fold, waist_fold, back_thigh_fold, outer_thigh_fold, inner_thigh_fold, front_thigh_fold, lower_leg_fold, metabolic_age, muscle_mass, body_water, fat, bone, visceral_fat, bmi, physique_rating")
             .eq("club_number", clubNumber);
 
 
@@ -687,8 +908,15 @@ function AddTestResults() {
     const outer_thigh_foldRef = useRef(null);
     const inner_thigh_foldRef = useRef(null);
     const front_thigh_foldRef = useRef(null);
-
-    //outer_thigh_fold
+    const lower_leg_foldRef = useRef(null);
+    const metabolic_ageRef = useRef(null);
+    const muscle_massRef = useRef(null);
+    const body_waterRef = useRef(null);
+    const fatRef = useRef(null);
+    const boneRef = useRef(null);
+    const visceral_fatRef = useRef(null);
+    const bmiRef = useRef(null);
+    const physique_ratingRef = useRef(null);
     const tabIndex = useTabIndex();
 
     return (
@@ -821,17 +1049,60 @@ function AddTestResults() {
                     placeholder="Outer thigh"
                 />
                 <InputText
-                ref={inner_thigh_foldRef}
-                keyfilter="num"
-                placeholder="Inner thigh"
+                    ref={inner_thigh_foldRef}
+                    keyfilter="num"
+                    placeholder="Inner thigh"
                 />
                 <InputText
                     ref={front_thigh_foldRef}
                     keyfilter="num"
                     placeholder="Front thigh"
                 />
-
-                {/*outer_thigh_fold*/}
+                <InputText
+                    ref={lower_leg_foldRef}
+                    keyfilter="num"
+                    placeholder="Lower leg"
+                />
+                 <InputText
+                     ref={metabolic_ageRef}
+                     keyfilter="int"
+                     placeholder="Metabolic age"
+                 />
+                <InputText
+                    ref={muscle_massRef}
+                    keyfilter="num"
+                    placeholder="Muscle mass"
+                />
+                <InputText
+                    ref={body_waterRef}
+                    keyfilter="num"
+                    placeholder="Body water"
+                />
+                <InputText
+                    ref={fatRef}
+                    keyfilter="num"
+                    placeholder="Fat"
+                />
+                <InputText
+                    ref={boneRef}
+                    keyfilter="num"
+                    placeholder="Bone"
+                />
+                <InputText
+                    ref={visceral_fatRef}
+                    keyfilter="num"
+                    placeholder="Visceral fat"
+                />
+                <InputText
+                    ref={bmiRef}
+                    keyfilter="num"
+                    placeholder="BMI"
+                />
+                <InputText
+                    ref={physique_ratingRef}
+                    keyfilter="num"
+                    placeholder="Physique rating"
+                />
             </span>
 
             <div className="main-container">
