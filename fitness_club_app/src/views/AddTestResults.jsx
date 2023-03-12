@@ -409,7 +409,76 @@ function AddTestResults() {
                             ];
                         })}
                 </tr>
-                {/*lower_press_fold*/}
+                <tr>
+                    <th className="icon-caliper">Upper back</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.upper_back_fold - nextResult.upper_back_fold;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.upper_back_fold ? result.upper_back_fold : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="icon-caliper">Lower back</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.lower_back_fold - nextResult.lower_back_fold;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.lower_back_fold ? result.lower_back_fold : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                <tr>
+                    <th className="icon-caliper">Waist</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.waist_fold - nextResult.waist_fold;
+                                }
+                            }
+                            return [
+                                <td key={date}>{result && result.waist_fold ? result.waist_fold : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference) : ""}
+                                </td>
+
+                            ];
+                        })}
+                </tr>
+                {/*waist_fold*/}
                 </tbody>
             </table>
 
@@ -435,7 +504,10 @@ function AddTestResults() {
         const triceps_fold = triceps_foldRef.current.value;
         const upper_press_fold = upper_press_foldRef.current.value;
         const lower_press_fold = lower_press_foldRef.current.value;
-        //lower_press_fold
+        const upper_back_fold = upper_back_foldRef.current.value;
+        const lower_back_fold = lower_back_foldRef.current.value;
+        const waist_fold = waist_foldRef.current.value;
+        //waist_fold
 
         const { data, error } = await supabase
             .from('Results')
@@ -456,7 +528,10 @@ function AddTestResults() {
                     biceps_fold: biceps_fold,
                     triceps_fold: triceps_fold,
                     upper_press_fold: upper_press_fold,
-                    lower_press_fold: lower_press_fold
+                    lower_press_fold: lower_press_fold,
+                    upper_back_fold: upper_back_fold,
+                    lower_back_fold: lower_back_fold,
+                    waist_fold: waist_fold
                 }
             ]);
 
@@ -473,7 +548,7 @@ function AddTestResults() {
     async function fetchResults() {
         const { data, error } = await supabase
             .from("Results")
-            .select("club_number, test_date, day_mp, weight, neck, forearm, above_bust, bust, waist, hips, thigh, lower_leg, forearm_fold, biceps_fold, triceps_fold, upper_press_fold, lower_press_fold")
+            .select("club_number, test_date, day_mp, weight, neck, forearm, above_bust, bust, waist, hips, thigh, lower_leg, forearm_fold, biceps_fold, triceps_fold, upper_press_fold, lower_press_fold, upper_back_fold, lower_back_fold, waist_fold")
             .eq("club_number", clubNumber);
 
 
@@ -503,7 +578,10 @@ function AddTestResults() {
     const triceps_foldRef = useRef(null);
     const upper_press_foldRef = useRef(null);
     const lower_press_foldRef = useRef(null);
-    //lower_press_fold
+    const upper_back_foldRef = useRef(null);
+    const lower_back_foldRef = useRef(null);
+    const waist_foldRef = useRef(null);
+    //waist_fold
     const tabIndex = useTabIndex();
 
     return (
@@ -610,8 +688,23 @@ function AddTestResults() {
                     keyfilter="num"
                     placeholder="Lower press"
                 />
+                <InputText
+                    ref={upper_back_foldRef}
+                    keyfilter="num"
+                    placeholder="Upper back"
+                />
+                <InputText
+                    ref={lower_back_foldRef}
+                    keyfilter="num"
+                    placeholder="Lower back"
+                />
+                <InputText
+                    ref={waist_foldRef}
+                    keyfilter="num"
+                    placeholder="Waist"
+                />
 
-                {/*lower_press_fold*/}
+                {/*waist_fold*/}
             </span>
 
             <div className="main-container">

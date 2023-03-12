@@ -160,9 +160,10 @@
     }
 
     th, td {
-      padding: .5vw .5vw .5vw .8vw ;
+      padding: 4.5px .5vw 4px .8vw ;
       background-clip: padding-box;
       scroll-snap-align: start;
+      min-width: 54px;
     }
 
     thead {
