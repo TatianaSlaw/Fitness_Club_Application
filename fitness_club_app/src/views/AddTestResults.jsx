@@ -86,7 +86,7 @@ function AddTestResults() {
                         })}
                 </tr>
                 <tr>
-                    <th>Weight</th>
+                    <th className="icon-wieght">Weight</th>
                     {dates
                         .slice()
                         .sort((a, b) => new Date(b) - new Date(a))
@@ -109,7 +109,7 @@ function AddTestResults() {
                         })}
                 </tr>
                 <tr>
-                <th>Neck</th>
+                <th className="icon-ruler">Neck</th>
                 {dates
                     .slice()
                     .sort((a, b) => new Date(b) - new Date(a))
@@ -132,7 +132,7 @@ function AddTestResults() {
                     })}
                 </tr>
                 <tr>
-                    <th>Forearm</th>
+                    <th className="icon-ruler">Forearm</th>
                     {dates
                         .slice()
                         .sort((a, b) => new Date(b) - new Date(a))
@@ -156,7 +156,7 @@ function AddTestResults() {
                 </tr>
 
                 <tr>
-                    <th>Above bust</th>
+                    <th className="icon-ruler">Above bust</th>
                     {dates
                         .slice()
                         .sort((a, b) => new Date(b) - new Date(a))
@@ -180,7 +180,7 @@ function AddTestResults() {
                 </tr>
 
                 <tr>
-                    <th>Bust</th>
+                    <th className="icon-ruler">Bust</th>
                     {dates
                         .slice()
                         .sort((a, b) => new Date(b) - new Date(a))
@@ -203,7 +203,7 @@ function AddTestResults() {
                         })}
                 </tr>
                 <tr>
-                    <th>Waist</th>
+                    <th className="icon-ruler">Waist</th>
                     {dates
                         .slice()
                         .sort((a, b) => new Date(b) - new Date(a))
@@ -226,7 +226,7 @@ function AddTestResults() {
                         })}
                 </tr>
                 <tr>
-                    <th>Hips</th>
+                    <th className="icon-ruler">Hips</th>
                     {dates
                         .slice()
                         .sort((a, b) => new Date(b) - new Date(a))
@@ -249,7 +249,7 @@ function AddTestResults() {
                         })}
                 </tr>
                 <tr>
-                    <th>Thigh</th>
+                    <th className="icon-ruler">Thigh</th>
                     {dates
                         .slice()
                         .sort((a, b) => new Date(b) - new Date(a))
@@ -272,7 +272,7 @@ function AddTestResults() {
                         })}
                 </tr>
                 <tr>
-                    <th>Lower leg</th>
+                    <th className="icon-ruler">Lower leg</th>
                     {dates
                         .slice()
                         .sort((a, b) => new Date(b) - new Date(a))
