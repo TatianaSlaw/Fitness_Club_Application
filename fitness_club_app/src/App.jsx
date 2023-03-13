@@ -9,6 +9,7 @@ import Trainer from "./views/Trainer.jsx";
 import AddNewMember from "./views/Addmember.jsx";
 import AddTestResults from "./views/AddTestResults"
 import AddOpenHours from "./views/Addopenhours.jsx";
+import ChangeMembership from "./views/Changemembership"
 import Administrator from "./views/Administrator.jsx";
 import Member from "./views/Member.jsx";
 
@@ -30,6 +31,7 @@ function App() {
                     <Route path="/addnew" element={<AddNewMember />} />
                     <Route path="/addtest" element={<AddTestResults />} />
                     <Route path="/openhours" element={<AddOpenHours />} />
+                    <Route path="/membership" element={<ChangeMembership />} />
                 <Route path="/member" element={<Member />} />
                 <Route path="/admin" element={<Administrator />} />
         </Routes>

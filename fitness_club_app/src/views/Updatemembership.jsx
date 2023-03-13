@@ -6,7 +6,7 @@ import { Toast } from 'primereact/toast';
 
 import supabase from '../services/supabase';
 
-function AddNewMember() {
+function ChangeMembership() {
     const toast = useRef(null);
     const navigate = useNavigate();
 
@@ -27,15 +27,10 @@ function AddNewMember() {
         });
     };
 
-    const handleNewMember = async (event) => {
+    const handleChangeMembership = async (event) => {
         event.preventDefault();
 
         const club_number = club_numberRef.current.value;
-        const name = nameRef.current.value;
-        const surname = surnameRef.current.value;
-        const phone = phoneRef.current.value;
-        const date_bd = date_bdRef.current.value;
-        const height = heightRef.current.value;
         const membership = membershipRef.current.value;
         const membership_end_date = membership_end_dateRef.current.value;
 
@@ -45,19 +40,19 @@ function AddNewMember() {
             .eq('club_number', club_number)
             .single();
 
-        if (existingMember) {
-            showError('This club member already exists');
+        if (!existingMember) {
+            showError('This club member does not exist');
             return;
         }
 
         const { data, error } = await supabase
             .from('Clients')
-            .insert([
-                { club_number: club_number, name: name, surname: surname, email: null, phone: phone, password: null, date_bd: date_bd, height: height, user_type: "client", membership: membership, membership_end_date: membership_end_date }
-            ]);
+            .update({ membership: membership, membership_end_date: membership_end_date })
+            .eq('club_number', club_number)
+
 
         if (!error) {
-            showSuccess('You have added a new member');
+            showSuccess('Membership updated successfully');
             navigate("/trainer");
         }
 
@@ -67,11 +62,6 @@ function AddNewMember() {
     };
 
     const club_numberRef = useRef(null);
-    const nameRef = useRef(null);
-    const surnameRef  = useRef(null);
-    const phoneRef  = useRef(null);
-    const date_bdRef  = useRef(null);
-    const heightRef  = useRef(null);
     const membershipRef = useRef(null);
     const membership_end_dateRef = useRef(null);
 
@@ -79,7 +69,7 @@ function AddNewMember() {
         <div className="newmember-container">
             <Toast ref={toast} />
             <h2>Add new club member info</h2>
-            <form className="login-form" onSubmit={handleNewMember}>
+            <form className="login-form" onSubmit={handleChangeMembership}>
                 <div>
                     <span className="input_label">Club number</span>
                     <span className="p-inputtext-lg">
@@ -90,51 +80,6 @@ function AddNewMember() {
                             maxLength={4}
                             ref={club_numberRef} />
                     </span>
-                </div>
-                <div>
-                    <span className="input_label">First name</span>
-                    <span className="p-inputtext-lg">
-                        <InputText
-                            className="p-inputtext-lg"
-                            placeholder="First name"
-                            ref={nameRef} />
-                    </span>
-                </div>
-                <div>
-                    <span className="input_label">Last name</span>
-                    <span className="p-inputtext-lg">
-                        <InputText
-                            className="p-inputtext-lg"
-                            placeholder="Last name"
-                            ref={surnameRef} />
-                    </span>
-                </div>
-                <div>
-                    <span className="input_label">Mobile phone</span>
-                    <span className="p-inputtext-lg">
-                        <InputText
-                            className="p-inputtext-lg"
-                            placeholder="Mobile phone"
-                            ref={phoneRef} />
-                    </span>
-                </div>
-                <div>
-                    <span className="input_label">Date of birth</span>
-                    <span className="p-inputtext-lg">
-                        <InputText
-                            className="p-inputtext-lg"
-                            placeholder="yyyy-mm-dd"
-                            ref={date_bdRef} />
-                </span>
-                </div>
-                <div>
-                    <span className="input_label">Height (cm)</span>
-                    <span className="p-inputtext-lg">
-                    <InputText
-                        className="p-inputtext-lg"
-                        placeholder="Height (cm)"
-                        ref={heightRef} />
-                </span>
                 </div>
                 <div>
                     <span className="input_label">Membership</span>
@@ -154,11 +99,10 @@ function AddNewMember() {
                             ref={membership_end_dateRef} />
                 </span>
                 </div>
-                <Button type="submit" label="Add member" className="btn-primary" />
+                <Button type="submit" label="Change membership" className="btn-primary" />
                 <span className="text-center"><a href="/trainer">Return to main dashboard</a></span>
             </form>
         </div>
     );
 }
-
-export default AddNewMember;
+export default ChangeMembership;

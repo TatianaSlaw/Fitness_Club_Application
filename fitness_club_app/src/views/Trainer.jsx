@@ -32,6 +32,10 @@ function Trainer() {
         navigate('/addnew')
     }
 
+    const handleMembership = () => {
+        navigate('/membership')
+    }
+
     const handleClubInfo = () => {
         navigate('/openhours')
     }
@@ -71,6 +75,14 @@ function Trainer() {
                         outlined
                         label="Add new club member" />
                 <i className="pi pi-user" style={{ fontSize: '1.5rem', color: "#2699f7" }}></i>
+            </div>
+            <div className="p-input-icon-right">
+                <Button onClick={handleMembership}
+                        className="btn-primary"
+                        severity="info"
+                        outlined
+                        label="Update membership" />
+                <i className="pi pi-id-card" style={{ fontSize: '1.5rem', color: "#2699f7" }}></i>
             </div>
             <div className="p-input-icon-right">
                         <Button onClick={handleClubInfo}

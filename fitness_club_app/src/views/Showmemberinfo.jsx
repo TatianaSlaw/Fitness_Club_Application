@@ -10,7 +10,7 @@ function ShowMemberInfo(props) {
             if (clubNumber.length === 4) {
                 const { data, error } = await supabase
                     .from('Clients')
-                    .select("id, club_number, name, surname, date_bd, height")
+                    .select("id, club_number, name, surname, date_bd, height, membership, membership_end_date")
                     .eq('club_number', clubNumber);
 
                 if (error) {
@@ -29,6 +29,7 @@ function ShowMemberInfo(props) {
             <div>
                 {clients.map((client) => (
                     <div className="member-info" key={client.id}>
+                        <div>Membership: <span className="test_value">{client.membership} ends {client.membership_end_date}</span></div>
                         <div>First name: <span className="test_value">{client.name}</span></div>
                         <div>Last name: <span className="test_value">{client.surname}</span></div>
                         <div>Date of birth: <span className="test_value">{client.date_bd}</span></div>
