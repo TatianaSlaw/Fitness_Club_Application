@@ -967,7 +967,7 @@ function AddTestResults() {
     const tabIndex = useTabIndex();
 
     return (
-        <div>
+        <div className="results-main-container">
             <Toast ref={toast} />
             <div className="club_number_input">
                 <InputText
@@ -977,7 +977,6 @@ function AddTestResults() {
                     keyfilter="int"
                     className="p-inputtext-lg"
                     placeholder="Enter club number"
-                    //style={{ marginLeft: "8px" }}
                 />
                 <Button className="btn-primary" label="SELECT" onClick={handleFetchClick} />
             </div>
@@ -992,7 +991,7 @@ function AddTestResults() {
             </div>
 
              <h2>Tests Results</h2>
-            <div className="results-container">
+             <div className="results-container">
                 <span className="prev_results " role="region" aria-label="test results table" tabIndex={tabIndex} >
                 {results.length > 0 ? renderResultsTable() : null}
             </span>
@@ -1158,7 +1157,7 @@ function AddTestResults() {
                     placeholder="Physique rating"
                 />
             </span>
-            </div>
+             </div>
 
             <div className="main-container">
                 <Button onClick={handleNewTest} className="btn-primary" label="ADD NEW TEST RESULTS" type="submit" />

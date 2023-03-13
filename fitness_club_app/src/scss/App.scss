@@ -115,12 +115,18 @@
 }
 
 
-  .btn-edit {
+.btn-edit {
     margin-top: 0 !important;
     margin-bottom: 2rem;
   }
 
 //---AddTestResults Component---
+
+.results-main-container {
+  @media only screen and (min-width: 992px) {
+    width: 1280px;
+  };
+}
 
 .member-info {
   text-align: left;

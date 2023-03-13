@@ -11,16 +11,20 @@ import youtube from "../assets/youtube.png";
 function Footer() {
 
     return (
-        <div className="footer-container">
-            <a href="#"><img src={ map } alt="club on map"/></a>
-            <a href="#"><img src={ phone } alt="club phone number"/></a>
-            <a href="#"><img src={ whatsapp } alt="club WhatsApp"/></a>
-            <a href="#"><img src={ email } alt="club email"/></a>
-            <a href="#"><img src={ www } alt="club webpage"/></a>
-            <a href="#"><img src={ instagram } alt="club on Instagram"/></a>
-            <a href="#"><img src={ facebook } alt="club on Facebook"/></a>
-            <a href="#"><img src={ youtube } alt="club on YouTube"/></a>
-        </div>
+        <>
+            <div>Contact us</div>
+            <div className="footer-container">
+                <span><a href="#"><img src={ map } alt="club on map"/>Xxxxxxxxxxxxxxxx st., xx</a></span>
+                <span><a href="#"><img src={ phone } alt="club phone number"/>+ xxx xxx xxx</a></span>
+                <span><a href="#"><img src={ whatsapp } alt="club WhatsApp"/>+ xxx xxx xxx</a></span>
+                <span><a href="#"><img src={ email } alt="club email"/></a>contact@xxxx.com</span>
+                <span><a href="#"><img src={ www } alt="club webpage"/>https://xxx.com</a>
+                <a href="#"><img src={ instagram } alt="club on Instagram"/></a>
+                <a href="#"><img src={ facebook } alt="club on Facebook"/></a>
+                <a href="#"><img src={ youtube } alt="club on YouTube"/></a></span>
+            </div>
+        </>
+
     )
 }
 
