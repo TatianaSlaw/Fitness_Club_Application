@@ -102,7 +102,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.weight ? result.weight : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -125,7 +125,7 @@ function AddTestResults() {
                         return [
                             <td key={date}>{result && result.neck ? result.neck : ""}</td>,
                             index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                {difference !== null ? Math.abs(difference) : ""}
+                                {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                             </td>
 
                         ];
@@ -148,7 +148,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.forearm ? result.forearm : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -172,7 +172,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.above_bust ? result.above_bust : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -196,7 +196,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.bust ? result.bust : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -219,7 +219,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.waist ? result.waist : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -242,7 +242,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.hips ? result.hips : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -265,7 +265,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.thigh ? result.thigh : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -288,7 +288,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.lower_leg ? result.lower_leg : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -311,7 +311,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.forearm_fold ? result.forearm_fold : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -334,7 +334,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.biceps_fold ? result.biceps_fold : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -357,7 +357,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.triceps_fold ? result.triceps_fold : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -380,7 +380,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.upper_press_fold ? result.upper_press_fold : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -403,7 +403,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.lower_press_fold ? result.lower_press_fold : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -426,7 +426,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.upper_back_fold ? result.upper_back_fold : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -449,7 +449,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.lower_back_fold ? result.lower_back_fold : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -472,7 +472,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.waist_fold ? result.waist_fold : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -495,7 +495,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.back_thigh_fold ? result.back_thigh_fold : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -518,7 +518,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.outer_thigh_fold ? result.outer_thigh_fold : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -541,7 +541,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.inner_thigh_fold ? result.inner_thigh_fold : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -564,7 +564,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.front_thigh_fold ? result.front_thigh_fold : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -587,7 +587,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.lower_leg_fold ? result.lower_leg_fold : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -633,7 +633,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.muscle_mass ? result.muscle_mass : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -656,7 +656,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.body_water ? result.body_water : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -679,7 +679,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.fat ? result.fat : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -702,7 +702,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.bone ? result.bone : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -725,7 +725,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.visceral_fat ? result.visceral_fat : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -748,7 +748,7 @@ function AddTestResults() {
                             return [
                                 <td key={date}>{result && result.bmi ? result.bmi : ""}</td>,
                                 index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                    {difference !== null ? Math.abs(difference) : ""}
+                                    {difference !== null ? Math.abs(difference).toFixed(2) : ""}
                                 </td>
 
                             ];
@@ -938,11 +938,12 @@ function AddTestResults() {
                 <div style={{ color: "red", marginTop: "8px" }}>{errorMessage}</div>
             )}
             <ShowMemberInfo clubNumber={clubNumber} />
-            <div className="section_header">Tests Results</div>
-            <span className="prev_results " role="region" aria-label="test results table" tabIndex={tabIndex} >
+            <h2>Tests Results</h2>
+            <div className="results-container">
+                            <span className="prev_results " role="region" aria-label="test results table" tabIndex={tabIndex} >
                 {results.length > 0 ? renderResultsTable() : null}
             </span>
-            <span className="last_results">
+                <span className="last_results">
                 <InputText
                     ref={test_dateRef}
                     placeholder="yyyy-mm-dd"
@@ -1104,6 +1105,7 @@ function AddTestResults() {
                     placeholder="Physique rating"
                 />
             </span>
+            </div>
 
             <div className="main-container">
                 <Button onClick={handleNewTest} className="btn-primary" label="ADD NEW TEST RESULTS" type="submit" />

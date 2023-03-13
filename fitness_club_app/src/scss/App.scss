@@ -7,7 +7,7 @@
   align-items: center;
 
   h2{
-    margin: 7vh 0;
+    margin: 1vh 0;
   }
 
   .pi {
@@ -19,7 +19,7 @@
   }
 
   span {
-    margin: 5vh 0;
+    margin: 1vh 0;
   }
 
   .p-inputtext {
@@ -67,7 +67,7 @@
     display: inline-block;
     width: 40vw;
     font-size: 1.25rem;
-    padding: 0.5rem 0.625rem;
+    padding: 8px 10px;
     margin: 0;
 
     @media only screen and (min-width: 992px) {
@@ -133,141 +133,146 @@
 
 //---AddTestResults Component---
 
-  .section_header {
-    color: $text-color;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin: 1.25rem 0;
-  }
+.results-container {
 
-  .results_table {
-    font-size: 1.3rem;
-    text-align: center;
-
-    th {
-      background-color: $primary-color;
-      color: white;
-      font-weight: normal;
-      text-align: left;
-    }
-
-    tbody tr:nth-child(odd) {
-      background-color: #ccc;
-    }
-
-    tbody tr:nth-child(even) {
-      background-color: #eee;
-    }
-
-    th, td {
-      padding: 4.5px .5vw 4px .8vw ;
-      background-clip: padding-box;
-      scroll-snap-align: start;
-      min-width: 54px;
-    }
-
-    thead {
-      z-index: 1000;
-      position: relative;
-    }
-
-    thead th {
-      position: sticky;
-      top: 0;
-      border-top: 0;
-      background-clip: padding-box;
-    }
-
-    thead th.pin {
-      left: 0;
-      z-index: 1001;
-      border-left: 0;
-    }
-
-    tbody th {
-      background-clip: padding-box;
-      border-left: 0;
-    }
-
-    tbody {
-      z-index: 10;
-      position: relative;
-    }
-
-    tbody th {
-      position: sticky;
-      left: 0;
-    }
-
-    .row_header {
-      min-width: 155px;
-    }
-
-    th.icon-wieght {
-
-      &:after {
-        content: url("../assets/wieght.png");
-        position: absolute;
-        right: .8vw;
-      }
-    }
-
-    th.icon-ruler {
-
-      &:after {
-        content: url("../assets/ruler.png");
-        position: absolute;
-        right: .8vw;
-      }
-    }
-
-    th.icon-caliper {
-
-      &:after {
-        content: url("../assets/caliper.png");
-        position: absolute;
-        right: .8vw;
-      }
-    }
-
-    .negative {
-      color: green;
-      font-size: 1rem;
-
-      &:before {
-        content: "-";
-      }
-    }
-
-    .positive {
-      color: red;
-      font-size: 1rem;
-
-      &:before {
-        content: "+";
-      }
-    }
-  }
+  display: flex;
 
   .prev_results {
-    display: inline-block;
+    display: flex;
+    align-items: flex-start;
+    //justify-content: flex-end;
     width: 60vw;
-    vertical-align: top;
     overflow: scroll;
     scroll-snap-type: x mandatory;
+
+    .results_table {
+      font-size: 1.3rem;
+      text-align: center;
+
+      th {
+        background-color: $primary-color;
+        color: white;
+        font-weight: normal;
+        text-align: left;
+      }
+
+      tbody tr:nth-child(odd) {
+        background-color: #ccc;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #eee;
+      }
+
+      th, td {
+        padding: 4.3px 5px 4.3px 5px ;
+        background-clip: padding-box;
+        scroll-snap-align: start;
+        min-width: 54px;
+        height: 38px;
+      }
+
+      thead {
+        z-index: 1000;
+        position: relative;
+      }
+
+      thead th {
+        position: sticky;
+        top: 0;
+        border-top: 0;
+        background-clip: padding-box;
+      }
+
+      thead th.pin {
+        left: 0;
+        z-index: 1001;
+        border-left: 0;
+      }
+
+      tbody th {
+        background-clip: padding-box;
+        border-left: 0;
+      }
+
+      tbody {
+        z-index: 10;
+        position: relative;
+      }
+
+      tbody th {
+        position: sticky;
+        left: 0;
+      }
+
+      .row_header {
+        min-width: 155px;
+      }
+
+      th.icon-wieght {
+
+        &:after {
+          content: url("../assets/wieght.png");
+          position: absolute;
+          right: .8vw;
+        }
+      }
+
+      th.icon-ruler {
+
+        &:after {
+          content: url("../assets/ruler.png");
+          position: absolute;
+          right: .8vw;
+        }
+      }
+
+      th.icon-caliper {
+
+        &:after {
+          content: url("../assets/caliper.png");
+          position: absolute;
+          right: .8vw;
+        }
+      }
+
+      .negative {
+        color: green;
+        font-size: 1rem;
+
+        &:before {
+          content: "-";
+        }
+      }
+
+      .positive {
+        color: red;
+        font-size: 1rem;
+
+        &:before {
+          content: "+";
+        }
+      }
+    }
   }
 
   .last_results {
     max-width: 20vw;
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
     vertical-align: top;
 
     .p-inputtext {
       width: 20vw;
+      height: 40px;
 
       @media only screen and (min-width: 992px) {
         max-width: 200px;
       }
     }
   }
+}
+
+
+
 
