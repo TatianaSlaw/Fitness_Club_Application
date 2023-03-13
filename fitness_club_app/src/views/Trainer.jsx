@@ -74,7 +74,7 @@ function Trainer() {
                         severity="info"
                         outlined
                         label="Add new club member" />
-                <i className="pi pi-user" style={{ fontSize: '1.5rem', color: "#2699f7" }}></i>
+                <i className="pi pi-user-plus" style={{ fontSize: '1.5rem', color: "#2699f7" }}></i>
             </div>
             <div className="p-input-icon-right">
                 <Button onClick={handleMembership}

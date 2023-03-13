@@ -6,7 +6,7 @@ import { Toast } from 'primereact/toast';
 
 import supabase from '../services/supabase';
 
-function ChangeMembership() {
+function Updatemembership() {
     const toast = useRef(null);
     const navigate = useNavigate();
 
@@ -99,10 +99,10 @@ function ChangeMembership() {
                             ref={membership_end_dateRef} />
                 </span>
                 </div>
-                <Button type="submit" label="Change membership" className="btn-primary" />
+                <Button type="submit" label="Update membership" className="btn-primary" />
                 <span className="text-center"><a href="/trainer">Return to main dashboard</a></span>
             </form>
         </div>
     );
 }
-export default ChangeMembership;
+export default Updatemembership;

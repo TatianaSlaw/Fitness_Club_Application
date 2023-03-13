@@ -60,6 +60,15 @@
   .p-float-label {
     margin: 0;
   }
+
+  .text-center {
+    margin: 2.5rem 0;
+    display: inline-block;
+    width:80vw;
+    text-align: center;
+    font-size: 1.2rem;
+  }
+
 }
 .newmember-container {
 
@@ -105,33 +114,40 @@
   }
 }
 
-  .text-center {
-    margin-top: 2.5rem;
-    display: inline-block;
-    width:80vw;
-    text-align: center;
-    font-size: 1.2rem;
-  }
 
   .btn-edit {
     margin-top: 0 !important;
     margin-bottom: 2rem;
   }
 
-
-
 //---AddTestResults Component---
 
 .member-info {
   text-align: left;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
   color: $primary-color;
   width: 80vw;
+  margin-bottom: 20px;
 
   .test_value {
     color: $text-color;
     font-weight: normal;
+  }
+
+}
+
+.update {
+
+  .p-button {
+    min-width: 200px;
+    font-size: 1em;
+    color: $primary-color;
+    text-align: left;
+  }
+
+  .p-input-icon-right > i {
+    top: 40%;
   }
 }
 
@@ -146,6 +162,7 @@
     width: 60vw;
     overflow: scroll;
     scroll-snap-type: x mandatory;
+    color: $primary-color;
 
     .results_table {
       font-size: 1.3rem;
@@ -272,6 +289,29 @@
         max-width: 200px;
       }
     }
+  }
+}
+
+.recommendations, .club_number_input {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.25em;
+  align-items: center;
+
+  .p-inputtext-lg {
+    width: 58vw;
+  }
+
+  .btn-primary {
+    margin-left: 10px;
+    height: 48px;
+    width: 20vw;
+
+  }
+
+  .span {
+    line-height: 58px;
   }
 }
 
