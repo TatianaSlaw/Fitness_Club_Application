@@ -118,20 +118,22 @@
     margin-bottom: 2rem;
   }
 
-  .member-info {
-    text-align: left;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: $primary-color;
-    width: 80vw;
 
-    .test_value {
-      color: $text-color;
-      font-weight: normal;
-    }
-  }
 
 //---AddTestResults Component---
+
+.member-info {
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: $primary-color;
+  width: 80vw;
+
+  .test_value {
+    color: $text-color;
+    font-weight: normal;
+  }
+}
 
 .results-container {
 
@@ -271,6 +273,16 @@
       }
     }
   }
+}
+
+.footer-container {
+  border-top: 1px solid #ccc;
+  padding-top: 5vh;
+  margin-top: 20vw;
+  margin-bottom: 10vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 
