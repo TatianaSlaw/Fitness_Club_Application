@@ -13,7 +13,14 @@ function Footer() {
 
     return (
             <div className="footer-container">
-                <h2>Contact us</h2>
+                <h2>Club Hours</h2>
+                <span>Mon 08:00 - 20:00 break 13:00 - 14:00</span>
+                <span>Tue 08:00 - 20:00 break 14:00 - 15:00</span>
+                <span>Wed 14:00 - 20:00</span>
+                <span>Thu 08:00 - 20:00 break 13:00 - 14:00</span>
+                <span>Fri 08:00 - 20:00 break 14:00 - 15:00</span>
+                <span>Sat 08:00 - 13:00</span>
+                <h2>Contact Us</h2>
                 <span>
                     <a href="https://www.google.pl/maps"><img src={ map } alt="club on map"/>Xxxxxxxxxxxxxxxx st., xx</a>
                     <a href="mailto:contact@xxxx.com"><img src={ email } alt="club email"/>contact@xxxx.com</a>

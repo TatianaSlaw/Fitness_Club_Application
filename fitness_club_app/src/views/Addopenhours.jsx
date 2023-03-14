@@ -1,17 +1,17 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 import { InputTextarea } from 'primereact/inputtextarea';
 
-
 import supabase from '../services/supabase';
 
 function AddOpenHours() {
     const toast = useRef(null);
     const navigate = useNavigate();
-
+    const [open_hours, setOpen_hours] = useState('');
+    const clubId = 333;
 
     const showSuccess = (msg) => {
         toast.current.show({
@@ -33,24 +33,21 @@ function AddOpenHours() {
     const handleNewClubInfo = async (event) => {
         event.preventDefault();
 
-        const club_info = club_numberRef.current.value;
 
-        let { data, error } = await supabase.auth.signInWithPassword({
-            club_info: club_info,
-        });
+        const { data, error } = await supabase
+            .from('Info')
+            .update({ open_hours: open_hours})
+            .eq('club_id', clubId);
 
-        if (data.user) {
-            //localStorage.setItem('userData', JSON.stringify(data.user));
+        if (!error) {
             showSuccess('You have successfully add new info');
-            navigate("/");
+            navigate("/trainer");
         }
 
         if (error) {
             showError(error.message);
         }
     };
-
-    const club_infoRef = useRef(null);
 
     return (
         <div className="main-container">
@@ -59,7 +56,8 @@ function AddOpenHours() {
             <form className="login-form" onSubmit={handleNewClubInfo}>
                  <span>
                         <InputTextarea autoResize
-                                       ref={club_infoRef}
+                                       value={open_hours}
+                                       onChange={(e) => setOpen_hours(e.target.value)}
                                        rows={15}
                                        cols={20} />
                 </span>
@@ -72,5 +70,4 @@ function AddOpenHours() {
         </div>
     )
 }
-
 export default AddOpenHours;
