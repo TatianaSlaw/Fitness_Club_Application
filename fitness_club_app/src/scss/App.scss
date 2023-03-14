@@ -3,7 +3,7 @@
 .main-container,.login-container, .login-form, .newmember-container, .member-container {
   display: flex;
   flex-direction: column;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
 
   h2{
@@ -114,7 +114,6 @@
   }
 }
 
-
 .btn-edit {
     margin-top: 0 !important;
     margin-bottom: 2rem;
@@ -122,10 +121,8 @@
 
 //---AddTestResults Component---
 
-.results-main-container {
-  @media only screen and (min-width: 992px) {
-    width: 1280px;
-  };
+.results-main-container, .member-results-main-container {
+
 }
 
 .member-info {
@@ -158,7 +155,6 @@
 }
 
 .results-container {
-
   display: flex;
 
   .prev_results {
@@ -313,7 +309,6 @@
     margin-left: 10px;
     height: 48px;
     width: 20vw;
-
   }
 
   .span {
@@ -322,13 +317,69 @@
 }
 
 .footer-container {
-  border-top: 1px solid #ccc;
-  padding-top: 5vh;
-  margin-top: 20vw;
-  margin-bottom: 10vw;
+  padding-top: 2vh;
+  padding-right: 1vw;
+  margin-bottom: 2vw;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  flex-direction: column;
+  //justify-content: space-between;
+  max-width: 80vw;
+
+  h2 {
+    background-color: $primary-color;
+    color: white;
+    padding: 1vw;
+    font-weight: normal;
+    font-size: 1.25em;
+  }
+
+  span {
+    display: flex;
+    align-items: center;
+    margin: 5px 0;
+
+    img {
+      display: flex;
+      align-items: center;
+      padding: 0 2vw;
+      width: 55px;
+    }
+
+    a {
+      display: flex;
+      align-items: center;
+    }
+
+  }
+}
+
+.member-results-main-container {
+
+  .club_number_input {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1.25em;
+    align-items: center;
+
+    .p-inputtext-lg {
+      width: 80vw;
+    }
+  }
+
+  .results-container {
+    .prev_results {
+      width:  80vw;
+      margin-bottom: 20px;
+    }
+  }
+
+  .btn-primary {
+    width: 80vw;
+    margin-bottom: 30px;
+    margin-top: 10px;
+  }
 }
 
 
