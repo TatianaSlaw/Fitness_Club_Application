@@ -32,17 +32,37 @@ function Signup() {
     const handleSignup = async (event) => {
         event.preventDefault();
 
-        const email = emailRef.current.value;
+        const emailValue = emailRef.current.value;
         const passwordValue = password;
         const password2Value = password2;
+        const clubNumberValue = clubNumberRef.current.value;
 
-        if (password !== password2) {
-            showError("Passwords don't match");
+        let { data: clientData, error: clientError } = await supabase
+            .from('Clients')
+            .select('email')
+            .eq('club_number', clubNumberValue);
+
+        //sprawdzamy czy istnieje taki numer klubowy
+
+        if (clientData.length === 0) {
+            showError("Club number not found. Please enter a valid club number.");
+            return;
+        }
+
+        //sprawdzamy czy ten numer clubowy posiada wypelnione pole email
+
+        if (clientData[0].email.length > 0) {
+            showError("An account with this club number already exists. Please reset your password.");
+            return;
+        }
+
+        if (clientError) {
+            showError("Error checking club number: " + clientError.message);
             return;
         }
 
         let { data, error } = await supabase.auth.signUp({
-            email: email,
+            email: emailValue,
             password: password,
         });
 
@@ -56,6 +76,7 @@ function Signup() {
         }
     };
 
+    const clubNumberRef = useRef(null);
     const emailRef = useRef(null);
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
@@ -65,6 +86,15 @@ function Signup() {
             <Toast ref={toast} />
             <h2>Create your account</h2>
             <form className="login-form" onSubmit={handleSignup}>
+                <span className="p-input-icon-left">
+                    <i className="pi pi-id-card"></i>
+                    <InputText
+                        className="p-inputtext-lg"
+                        placeholder="Your club number"
+                        maxLength={4}
+                        keyfilter="int"
+                        ref={clubNumberRef} />
+                </span>
                 <span className="p-input-icon-left">
                     <i className="pi pi-envelope"></i>
                     <InputText
