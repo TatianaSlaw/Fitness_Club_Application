@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, {useRef, useState} from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
 import { Password } from 'primereact/password';
@@ -33,9 +33,8 @@ function Signup() {
         event.preventDefault();
 
         const email = emailRef.current.value;
-        const password = passwordRef.current.value;
-        const password2 = password2Ref.current.value;
-
+        const passwordValue = password;
+        const password2Value = password2;
 
         if (password !== password2) {
             showError("Passwords don't match");
@@ -58,8 +57,8 @@ function Signup() {
     };
 
     const emailRef = useRef(null);
-    const passwordRef = useRef(null);
-    const password2Ref = useRef(null);
+    const [password, setPassword] = useState("");
+    const [password2, setPassword2] = useState("");
 
     return (
         <div className="login-container">
@@ -73,29 +72,27 @@ function Signup() {
                         placeholder="Your email"
                         ref={emailRef} />
                 </span>
-                <span className="p-input-icon-right p-inputtext-lg">
-                    {/*<Password placeholder="Password" ref={passwordRef} feedback={false} toggleMask />*/}
-                    <InputText
+                    <Password
                         className="p-inputtext p-component p-filled p-password-input"
                         placeholder="Password"
-                        type="password"
-                        ref={passwordRef} />
-                    <i className="pi pi-eye"></i>
-                </span>
-                <span className="p-input-icon-right p-inputtext-lg">
-                    {/*<Password placeholder="Reenter password" ref={password2Ref} feedback={false} toggleMask />*/}
-                    <InputText
+                        feedback={false}
+                        toggleMask
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    <Password
                         className="p-inputtext p-component p-filled p-password-input"
                         placeholder="Reenter password"
-                        type="password"
-                        ref={password2Ref} />
-                    <i className="pi pi-eye"></i>
-                </span>
+                        feedback={false}
+                        toggleMask
+                        value={password2}
+                        onChange={(e) => setPassword2(e.target.value)}
+                    />
                 <Button
                     className="btn-primary"
                     label="SIGN UP"
                     type="submit" />
-                <span><a href="/login">Already have account?</a></span>
+                <span><a href="/">Already have account?</a></span>
             </form>
         </div>
     )

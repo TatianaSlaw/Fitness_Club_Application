@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import {Outlet, useLocation, useNavigate} from "react-router-dom";
 import { InputText } from "primereact/inputtext";
 import { Password } from 'primereact/password';
@@ -29,15 +29,15 @@ function Login() {
         });
     };
 
-    const handleSignup = async (event) => {
+    const handleLogin = async (event) => {
         event.preventDefault();
 
         const email = emailRef.current.value;
-        const password = passwordRef.current.value;
+        const password2 = password;
 
         let { data, error } = await supabase.auth.signInWithPassword({
             email: email,
-            password: password,
+            password: password
         });
 
         if (data.user) {
@@ -52,14 +52,14 @@ function Login() {
     };
 
     const emailRef = useRef(null);
-    const passwordRef = useRef(null);
+    const [password, setPassword] = useState("");
 
     return (
         <div className="login-container">
             <Toast ref={toast} />
             <h2>Log in to your account</h2>
             <Outlet />
-            <form className="login-form" onSubmit={handleSignup}>
+            <form className="login-form" onSubmit={handleLogin}>
                 <span className="p-input-icon-left">
                     <i className="pi pi-envelope"></i>
                     <InputText
@@ -67,15 +67,14 @@ function Login() {
                         placeholder="Your email"
                         ref={emailRef} />
                 </span>
-                <span className="p-input-icon-right p-inputtext-lg">
-                    {/*<Password placeholder="Password" ref={passwordRef} feedback={false} toggleMask />*/}
-                    <InputText
+                    <Password
                         className="p-inputtext p-component p-filled p-password-input"
                         placeholder="Password"
-                        type="password"
-                        ref={passwordRef} />
-                    <i className="pi pi-eye"></i>
-                </span>
+                        feedback={false}
+                        toggleMask
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
                 <span><a href="/reset">Forgot password?</a></span>
                 <Button
                     className="btn-primary"

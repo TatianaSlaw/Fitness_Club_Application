@@ -19,7 +19,7 @@ function Footer() {
         async function fetchInfo() {
                 const { data, error } = await supabase
                     .from('Info')
-                    .select("open_hours")
+                    .select("open_hours, id")
                     .eq('club_id', 333);
 
             if (error) {
