@@ -4,6 +4,7 @@ import supabase from "../services/supabase";
 function ShowMemberInfo(props) {
     const { clubNumber } = props;
     const [clients, setClients] = useState([]);
+    const [errorMessage, setErrorMessage] = useState("");
 
     useEffect(() => {
         async function fetchClients() {

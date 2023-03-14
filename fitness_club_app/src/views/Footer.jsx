@@ -1,3 +1,6 @@
+import React, {useEffect, useState} from "react";
+import supabase from "../services/supabase";
+
 import map from "../assets/map.svg";
 import phone from "../assets/phone.svg";
 import whatsapp from "../assets/whatsapp.svg";
@@ -6,10 +9,28 @@ import www from "../assets/www.svg";
 import facebook from "../assets/facebook.svg";
 import instagram from "../assets/instagram.svg";
 import youtube from "../assets/youtube.svg";
-import { ReactSVG } from "react-svg";
-
 
 function Footer() {
+
+    const [info, setInfo] = useState([]);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    useEffect(() => {
+        async function fetchInfo() {
+                const { data, error } = await supabase
+                    .from('Info')
+                    .select("open_hours")
+                    .eq('club_id', 333);
+
+            if (error) {
+                console.error(error);
+                setErrorMessage("Error occurred while fetching data");
+            } else {
+                setInfo(data);
+            }
+        }
+        fetchInfo();
+    }, []);
 
     return (
             <div className="footer-container">
@@ -20,6 +41,14 @@ function Footer() {
                 <span>Thu 08:00 - 20:00 break 13:00 - 14:00</span>
                 <span>Fri 08:00 - 20:00 break 14:00 - 15:00</span>
                 <span>Sat 08:00 - 13:00</span>
+
+                <h2>Сlub Opening Hours for Upcoming Holidays</h2>
+                    {info.map((info) => (
+                        <div key={info.id}>
+                            {info.open_hours}
+                        </div>
+                    ))}
+
                 <h2>Contact Us</h2>
                 <span>
                     <a href="https://www.google.pl/maps"><img src={ map } alt="club on map"/>Xxxxxxxxxxxxxxxx st., xx</a>
