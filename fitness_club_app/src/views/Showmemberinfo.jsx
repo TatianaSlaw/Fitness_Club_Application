@@ -46,7 +46,8 @@ function ShowMemberInfo(props) {
                         <div>Date of birth: <span className="test_value">{new Date(client.date_bd).toLocaleDateString("pl-PL", )}</span>
                         </div>
                         <div>Height: <span className="test_value">{client.height}</span></div>
-                        <div>Recommendations: <span className="test_value">{client.recommendations}</span></div>
+                        <div>Recommendations: </div>
+                        <div className="test_value">{client.recommendations}</div>
                     </div>
                 ))}
             </div>
