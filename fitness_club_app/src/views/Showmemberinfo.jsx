@@ -30,10 +30,21 @@ function ShowMemberInfo(props) {
             <div>
                 {clients.map((client) => (
                     <div className="member-info" key={client.id}>
-                        <div>Membership: <span className="test_value">{client.membership} ends {client.membership_end_date}</span></div>
+                        <div>Membership:&nbsp;
+                            <span className="test_value">{client.membership}</span>
+                            &nbsp;ends&nbsp;
+                            <span className="test_value">
+                              {new Date(client.membership_end_date).toLocaleDateString("pl-PL", {
+                                  day: "2-digit",
+                                  month: "2-digit",
+                                  year: "2-digit"
+                              })}
+                            </span>
+                        </div>
                         <div>First name: <span className="test_value">{client.name}</span></div>
                         <div>Last name: <span className="test_value">{client.surname}</span></div>
-                        <div>Date of birth: <span className="test_value">{client.date_bd}</span></div>
+                        <div>Date of birth: <span className="test_value">{new Date(client.date_bd).toLocaleDateString("pl-PL", )}</span>
+                        </div>
                         <div>Height: <span className="test_value">{client.height}</span></div>
                         <div>Recommendations: <span className="test_value">{client.recommendations}</span></div>
                     </div>
