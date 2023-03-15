@@ -58,7 +58,7 @@ function AddNewMember() {
 
         if (!error) {
             showSuccess('You have added a new member');
-            navigate("/trainer");
+            navigate(-1);
         }
 
         if (error) {
@@ -155,7 +155,7 @@ function AddNewMember() {
                 </span>
                 </div>
                 <Button type="submit" label="Add member" className="btn-primary" />
-                <span className="text-center"><a href="/trainer">Return to main dashboard</a></span>
+                <span className="text-center"><a onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>Return to main dashboard</a></span>
             </form>
         </div>
     );

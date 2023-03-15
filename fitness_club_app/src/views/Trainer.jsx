@@ -1,4 +1,4 @@
-import {useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import React, {useEffect, useRef, useState} from "react";
 import { Button } from "primereact/button";
 import { Toast } from 'primereact/toast';
@@ -7,6 +7,7 @@ function Trainer() {
     const toast = useRef(null);
     const navigate = useNavigate();
     const {pathname} = useLocation();
+
     const showSuccess = (e,msg) => {
         e.preventDefault();
         toast.current.show({
@@ -26,18 +27,18 @@ function Trainer() {
     };
 
     const handleAddTestResult = () => {
-        navigate('/addtest')
+        navigate('/addtest');
     }
     const handleNewMember = () => {
-        navigate('/addnew')
+        navigate('/addnew');
     }
 
     const handleMembership = () => {
-        navigate('/membership')
+        navigate('/membership');
     }
 
     const handleClubInfo = () => {
-        navigate('/openhours')
+        navigate('/openhours');
     }
 
     const handleLogout = async () => {
@@ -58,7 +59,7 @@ function Trainer() {
         <div className="main-container">
             <Toast ref={toast} />
             <h1>
-                Fitness Club Dashboard
+                Fitness Club Trainer Dashboard
             </h1>
             <div className="p-input-icon-right">
                 <Button onClick={handleAddTestResult}
@@ -89,7 +90,7 @@ function Trainer() {
                         className="btn-primary"
                         severity="info"
                         outlined
-                        label="Add info for the coming holidays" />
+                        label="Update info for the coming holidays" />
                 <i className="pi pi-calendar-plus" style={{ fontSize: '1.5rem', color: "#2699f7" }}></i>
             </div>
             <div>

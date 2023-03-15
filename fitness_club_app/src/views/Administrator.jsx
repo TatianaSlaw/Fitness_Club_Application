@@ -25,19 +25,36 @@ function Administrator() {
         });
     };
 
-    const handleAddTestResult = () => {
-        navigate('/addtest')
-    }
+    const [info, setInfo] = useState([]);
+    const [errorMessage, setErrorMessage] = useState("");
+
+    useEffect(() => {
+        async function fetchInfo() {
+            const { data, error } = await supabase
+                .from('Info')
+                .select("open_hours, id")
+                .eq('club_id', 333);
+
+            if (error) {
+                setErrorMessage("Error occurred while fetching data");
+            } else {
+                setInfo(data);
+                showSuccess('You successfully update info.');
+            }
+        }
+        fetchInfo();
+    }, []);
+
     const handleNewMember = () => {
-        navigate('/addnew')
+        navigate('/addnew');
     }
 
     const handleMembership = () => {
-        navigate('/membership')
+        navigate('/membership');
     }
 
     const handleClubInfo = () => {
-        navigate('/openhours')
+        navigate('/openhours');
     }
 
     const handleLogout = async () => {
@@ -58,7 +75,7 @@ function Administrator() {
         <div className="main-container">
             <Toast ref={toast} />
             <h1>
-                Fitness Club Dashboard
+                Fitness Club Administrator Dashboard
             </h1>
             <div className="p-input-icon-right">
                 <Button onClick={handleNewMember}
@@ -76,12 +93,21 @@ function Administrator() {
                         label="Update membership" />
                 <i className="pi pi-id-card" style={{ fontSize: '1.5rem', color: "#2699f7" }}></i>
             </div>
+            <h2>Сlub Opening Hours for Upcoming Holidays</h2>
+            <span className="open-hours">
+                {info.map((info) => (
+                    <div key={info.id}>
+                        {info.open_hours}
+                    </div>
+                ))}
+            </span>
+
             <div className="p-input-icon-right">
                 <Button onClick={handleClubInfo}
                         className="btn-primary"
                         severity="info"
                         outlined
-                        label="Add info for the coming holidays" />
+                        label="Update info for the coming holidays" />
                 <i className="pi pi-calendar-plus" style={{ fontSize: '1.5rem', color: "#2699f7" }}></i>
             </div>
             <div>

@@ -53,7 +53,7 @@ function Updatemembership() {
 
         if (!error) {
             showSuccess('Membership updated successfully');
-            navigate("/trainer");
+            navigate(-1);
         }
 
         if (error) {
@@ -100,7 +100,7 @@ function Updatemembership() {
                 </span>
                 </div>
                 <Button type="submit" label="Update membership" className="btn-primary" />
-                <span className="text-center"><a href="/trainer">Return to main dashboard</a></span>
+                <span className="text-center"><a onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>Return to main dashboard</a></span>
             </form>
         </div>
     );
