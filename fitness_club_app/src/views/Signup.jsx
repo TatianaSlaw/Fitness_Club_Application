@@ -52,7 +52,7 @@ function Signup() {
         //sprawdzamy czy ten numer clubowy posiada wypelnione pole email
 
         if (clientData[0].email.length > 0) {
-            showError("An account with this club number already exists. Please reset your password.");
+            showError("An account with this club number already exists. Login or reset your password.");
             return;
         }
 
@@ -68,7 +68,7 @@ function Signup() {
 
         if (data.user) {
             showSuccess('Congratulations! You have successfully signed up for your account');
-            navigate("/trainer");
+            navigate("/");
         }
 
         if (error) {
@@ -82,10 +82,10 @@ function Signup() {
     const [password2, setPassword2] = useState("");
 
     return (
-        <div className="login-container">
+        <div className="signup-container">
             <Toast ref={toast} />
             <h2>Create your account</h2>
-            <form className="login-form" onSubmit={handleSignup}>
+            <form className="signup-form" onSubmit={handleSignup}>
                 <span className="p-input-icon-left">
                     <i className="pi pi-id-card"></i>
                     <InputText

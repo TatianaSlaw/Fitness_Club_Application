@@ -1,6 +1,12 @@
 @import 'variables';
 
-.main-container,.login-container, .login-form, .newmember-container, .member-container {
+.main-container,
+.signup-container,
+.signup-form,
+.login-container,
+.login-form,
+.newmember-container,
+.member-container {
   display: flex;
   flex-direction: column;
   justify-content: center;

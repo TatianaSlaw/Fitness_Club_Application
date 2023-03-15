@@ -33,17 +33,29 @@ function Login() {
         event.preventDefault();
 
         const email = emailRef.current.value;
-        const password2 = password;
+        const passwordValue = password;
 
         let { data, error } = await supabase.auth.signInWithPassword({
             email: email,
-            password: password
+            password: passwordValue
         });
+
+        let { data: clientData, error: clientError } = await supabase
+            .from('Clients')
+            .select('user_type')
+            .eq('email', email);
 
         if (data.user) {
             localStorage.setItem('userData', JSON.stringify(data.user));
             showSuccess('You have logged in your account');
-            navigate("/trainer");
+            alert(clientData[0].user_type);
+            if (clientData[0].user_type === "trainer") {
+                navigate("/trainer");
+            } else if (clientData[0].user_type === "adm") {
+                navigate("/admin");
+            } else {
+                navigate("/member");
+            }
         }
 
         if (error) {
