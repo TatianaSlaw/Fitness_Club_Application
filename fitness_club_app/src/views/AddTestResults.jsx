@@ -1162,7 +1162,10 @@ function AddTestResults() {
             <div className="main-container">
                 <Button onClick={handleNewTest} className="btn-primary" label="ADD NEW TEST RESULTS" type="submit" />
                 <span className="text-center">
-                    <a href="/trainer">Return to main dashboard</a>
+                    <a onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>
+                        Return to main dashboard
+                    </a>
+                    <i className="pi pi-replay" style={{ fontSize: '1rem', color: "#2699f7" }}></i>
                 </span>
             </div>
         </div>

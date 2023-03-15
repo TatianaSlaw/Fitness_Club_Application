@@ -68,13 +68,13 @@ function AddOpenHours() {
     return (
         <div className="main-container">
             <Toast ref={toast} />
-            <h2>Сlub Opening Hours for Upcoming Holidays</h2>
+            <h3>Club Opening Hours for Upcoming Holidays</h3>
             {info.map((info) => (
                 <div key={info.id}>
                     {info.open_hours}
                 </div>
             ))}
-            <h2>Add open hours or other info</h2>
+
             <form className="login-form" onSubmit={handleNewClubInfo}>
                  <span>
                         <InputTextarea autoResize
@@ -85,13 +85,14 @@ function AddOpenHours() {
                 </span>
                 <Button
                     className="btn-primary"
-                    label="ADD INFO"
+                    label="UPDATE INFO"
                     type="submit" />
                 <span className="text-center">
                     <a onClick={() => navigate(-1)}
                        style={{ cursor: 'pointer' }}>
                         Return to main dashboard
                     </a>
+                    <i className="pi pi-replay" style={{ fontSize: '1rem', color: "#2699f7" }}></i>
                 </span>
             </form>
         </div>

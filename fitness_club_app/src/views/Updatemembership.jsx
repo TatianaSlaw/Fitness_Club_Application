@@ -68,7 +68,7 @@ function Updatemembership() {
     return (
         <div className="newmember-container">
             <Toast ref={toast} />
-            <h2>Add new club member info</h2>
+            <h2>Update membership</h2>
             <form className="login-form" onSubmit={handleChangeMembership}>
                 <div>
                     <span className="input_label">Club number</span>
@@ -99,8 +99,13 @@ function Updatemembership() {
                             ref={membership_end_dateRef} />
                 </span>
                 </div>
-                <Button type="submit" label="Update membership" className="btn-primary" />
-                <span className="text-center"><a onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>Return to main dashboard</a></span>
+                <Button type="submit" label="UPDATE MEMBERSHIP" className="btn-primary" />
+                <span className="text-center">
+                    <a onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>
+                        Return to main dashboard
+                    </a>
+                    <i className="pi pi-replay" style={{ fontSize: '1rem', color: "#2699f7" }}></i>
+                </span>
             </form>
         </div>
     );

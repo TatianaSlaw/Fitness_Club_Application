@@ -78,7 +78,7 @@ function AddNewMember() {
     return (
         <div className="newmember-container">
             <Toast ref={toast} />
-            <h2>Add new club member info</h2>
+            <h2>New club member info</h2>
             <form className="login-form" onSubmit={handleNewMember}>
                 <div>
                     <span className="input_label">Club number</span>
@@ -154,8 +154,13 @@ function AddNewMember() {
                             ref={membership_end_dateRef} />
                 </span>
                 </div>
-                <Button type="submit" label="Add member" className="btn-primary" />
-                <span className="text-center"><a onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>Return to main dashboard</a></span>
+                <Button type="submit" label="ADD NEW MEMBER" className="btn-primary" />
+                <span className="text-center">
+                    <a onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>
+                        Return to main dashboard
+                    </a>
+                    <i className="pi pi-replay" style={{ fontSize: '1rem', color: "#2699f7" }}></i>
+                </span>
             </form>
         </div>
     );
