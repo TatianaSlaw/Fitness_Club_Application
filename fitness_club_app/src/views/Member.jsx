@@ -1,5 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
-import { InputText } from "primereact/inputtext";
+import React, { useRef, useState, useEffect} from "react";
 import { useTabIndex } from 'react-tabindex';
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
@@ -11,48 +10,13 @@ import ShowMemberInfo from "./Showmemberinfo.jsx";
 import Footer from "./Footer.jsx";
 
 function Member() {
-    const [clubNumber, setClubNumber] = useState("");
+    const clubNumber = localStorage.getItem("clubNumber");
     const [errorMessage, setErrorMessage] = useState("");
     const [results, setResults] = useState([]);
     const [dates, setDates] = useState([]);
     const toast = useRef(null);
     const navigate = useNavigate();
     const tabIndex = useTabIndex();
-
-    const showSuccess = (msg) => {
-        toast.current.show({
-            severity: "success",
-            summary: "Success",
-            detail: msg,
-            life: 3000,
-        });
-    };
-    const showError = (msg) => {
-        toast.current.show({
-            severity: "error",
-            summary: "Error",
-            detail: msg,
-            life: 3000,
-        });
-    };
-
-    function handleClubNumberChange(event) {
-        setClubNumber(event.target.value);
-    }
-
-    function handleFetchClick() {
-        if (clubNumber.length === 4) {
-            fetchResults();
-        } else {
-            setErrorMessage("Club number must be exactly 4 digits");
-        }
-    }
-
-    useEffect(() => {
-        if (clubNumber) {
-            fetchResults();
-        }
-    }, []);
 
     function renderResultsTable() {
         return (
@@ -782,12 +746,12 @@ function Member() {
         );
     }
 
+    useEffect(() => {
     async function fetchResults() {
         const { data, error } = await supabase
             .from("Results")
             .select("club_number, test_date, day_mp, weight, neck, forearm, above_bust, bust, waist, hips, thigh, lower_leg, forearm_fold, biceps_fold, triceps_fold, upper_press_fold, lower_press_fold, upper_back_fold, lower_back_fold, waist_fold, back_thigh_fold, outer_thigh_fold, inner_thigh_fold, front_thigh_fold, lower_leg_fold, metabolic_age, muscle_mass, body_water, fat, bone, visceral_fat, bmi, physique_rating")
             .eq("club_number", clubNumber);
-
 
         if (error) {
             console.error(error);
@@ -798,6 +762,8 @@ function Member() {
             setResults(data);
         }
     }
+        fetchResults();
+    }, [clubNumber]);
 
     const handleLogout = async () => {
         let { error } = await supabase.auth.signOut();
@@ -817,17 +783,7 @@ function Member() {
     return (
         <div className="member-results-main-container">
             <Toast ref={toast} />
-            <div className="club_number_input">
-                <InputText
-                    value={clubNumber}
-                    onChange={handleClubNumberChange}
-                    maxLength={4}
-                    keyfilter="int"
-                    className="p-inputtext-lg"
-                    placeholder="Enter club number"
-                />
-                <Button className="btn-primary" label="SELECT" onClick={handleFetchClick} />
-            </div>
+
             <h2>Member {clubNumber} info</h2>
             {errorMessage && (
                 <div style={{ color: "red", marginTop: "8px" }}>{errorMessage}</div>
