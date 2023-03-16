@@ -37,19 +37,22 @@ function Signup() {
         const password2Value = password2;
         const clubNumberValue = clubNumberRef.current.value;
 
+        if (password !== password2) {
+            showError("Passwords don't match");
+            return;
+        }
+
         let { data: clientData, error: clientError } = await supabase
             .from('Clients')
             .select('email')
             .eq('club_number', clubNumberValue);
 
-        //sprawdzamy czy istnieje taki numer klubowy
 
         if (clientData.length === 0) {
             showError("Club number not found. Please enter a valid club number.");
             return;
         }
 
-        //sprawdzamy czy ten numer clubowy posiada wypelnione pole email
 
         if (clientData[0].email.length > 0) {
             showError("An account with this club number already exists. Login or reset your password.");
