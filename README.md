@@ -1,5 +1,4 @@
-Fitness Club Application is a web application designed to store customer test information for future analysis.
-System Requirements
+Fitness Club Application is a web application designed to store club members test information for future analysis.
 
 This web application is built using React and Vite, two popular front-end development tools that offer fast performance
 and a streamlined developer experience. The application's styles were written using SASS, a popular preprocessor for CSS
@@ -9,6 +8,10 @@ interface. The backend is powered by Superbase, an open-source alternative to Fi
 and authentication system. With Superbase, the application stores data for registered users, client information, 
 and test results in a secure and scalable database. By combining the power of React, Vite, PrimeReact, and Superbase, 
 this application delivers a modern and user-friendly experience for fitness club members and trainers alike.
+
+System Requirements
+- Node.js (version 14 or later)
+- MongoDB (version 4.2 or later)
 
 Installation and Configuration
 
