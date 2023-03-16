@@ -1,14 +1,11 @@
 Fitness Club Application is a web application designed to store customer test information for future analysis.
 System Requirements
 
-To use this application, you need to have the following software installed:
-
-    Node.js (version 14 or later)
-    MongoDB (version 4.2 or later)
+This web application is built using React and Vite, two popular front-end development tools that offer fast performance and a streamlined developer experience. The application's frontend also leverages the power of PrimeReact, a set of open-source UI components for React that provide a polished and professional user interface. The backend is powered by Superbase, an open-source alternative to Firebase that provides a real-time database and authentication system. With Superbase, the application stores data for registered users, client information, and test results in a secure and scalable database. By combining the power of React, Vite, PrimeReact, and Superbase, this application delivers a modern and user-friendly experience for fitness club members and trainers alike.
 
 Installation and Configuration
 
-    1.Clone this repository to your local machine
+    1. Clone this repository to your local machine
     2. Install the required dependencies by running npm install in the project root directory
     3. Configure the application by creating a .env file in the project root directory and setting the following variables:
 
@@ -48,3 +45,9 @@ Authors
 License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
+
+Additional Information:
+
+    This application was built using ReactPrime components.
+    The icons used in this application were sourced from https://www.freepik.com and were converted from PNG format to SVG using https://png2svg.com/.
+    The favicon for this application was generated using https://favicon.io/favicon-converter/.
