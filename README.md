@@ -25,11 +25,23 @@ Usage
 
 To use the application, follow these steps:
 
-    6. Register a new account
-    7. Log in to the application using your credentials
-    8. Add customer test information by filling out the provided form
-    9. View customer test information by clicking on the customer's name in the table on the dashboard
-    10. Update or delete customer test information as needed
+    6. Register a new account using your Club Number.
+    7. Log in to the application using your credentials.
+    8. If you login as Trainer you could:
+        - choose client by his Club Number and see his member info and previous test results; 
+        - add client's last test information; 
+        - add new client;
+        - update clients membership details;
+        - update club info.
+    9. If you login as Administrator you could:
+        - add new client;
+        - update clients membership details;
+        - update club info.
+    10. If you login as Client you could:
+        - see membership details
+        - see your test information;
+        - see club info
+        
 
 Authors
 
