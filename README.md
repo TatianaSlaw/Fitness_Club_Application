@@ -34,7 +34,7 @@ To use the application, follow these steps:
 
 Authors
 
-    Tatiana Slawinska
+    Tatiana Sławecka
 
 License
 
