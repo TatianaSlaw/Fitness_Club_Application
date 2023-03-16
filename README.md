@@ -1,7 +1,14 @@
 Fitness Club Application is a web application designed to store customer test information for future analysis.
 System Requirements
 
-This web application is built using React and Vite, two popular front-end development tools that offer fast performance and a streamlined developer experience. The application's frontend also leverages the power of PrimeReact, a set of open-source UI components for React that provide a polished and professional user interface. The backend is powered by Superbase, an open-source alternative to Firebase that provides a real-time database and authentication system. With Superbase, the application stores data for registered users, client information, and test results in a secure and scalable database. By combining the power of React, Vite, PrimeReact, and Superbase, this application delivers a modern and user-friendly experience for fitness club members and trainers alike.
+This web application is built using React and Vite, two popular front-end development tools that offer fast performance
+and a streamlined developer experience. The application's styles were written using SASS, a popular preprocessor for CSS
+that offers additional features like variables, mixins, and nested rulesThe application's frontend also leverages the
+power of PrimeReact, a set of open-source UI components for React that provide a polished and professional user
+interface. The backend is powered by Superbase, an open-source alternative to Firebase that provides a real-time database
+and authentication system. With Superbase, the application stores data for registered users, client information, 
+and test results in a secure and scalable database. By combining the power of React, Vite, PrimeReact, and Superbase, 
+this application delivers a modern and user-friendly experience for fitness club members and trainers alike.
 
 Installation and Configuration
 
@@ -36,7 +43,6 @@ To use the application, follow these steps:
         - see membership details
         - see your test information;
         - see club info
-        
 
 Authors
 
@@ -48,6 +54,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 Additional Information:
 
-    This application was built using ReactPrime components.
     The icons used in this application were sourced from https://www.freepik.com and were converted from PNG format to SVG using https://png2svg.com/.
     The favicon for this application was generated using https://favicon.io/favicon-converter/.
