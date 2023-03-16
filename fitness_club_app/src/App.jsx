@@ -1,17 +1,17 @@
 import './scss/App.scss'
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 
-import Header from "./views/Header.jsx";
-import Signup from "./views/Signup.jsx";
-import Login from "./views/Login.jsx";
-import PasswordReset from "./views/PasswordReset.jsx";
-import Trainer from "./views/Trainer.jsx";
-import AddNewMember from "./views/AddMember.jsx";
-import AddTestResults from "./views/AddTestResults"
-import AddOpenHours from "./views/AddOpenHours.jsx";
-import UpdateMembership from "./views/UpdateMembership.jsx";
-import Administrator from "./views/Administrator.jsx";
-import Member from "./views/Member.jsx";
+import Header from "./components/Header.jsx";
+import Signup from "./components/Signup.jsx";
+import Login from "./components/Login.jsx";
+import PasswordReset from "./components/PasswordReset.jsx";
+import Trainer from "./components/Trainer.jsx";
+import AddNewMember from "./components/AddMember.jsx";
+import AddTestResults from "./components/AddTestResults"
+import AddOpenHours from "./components/AddOpenHours.jsx";
+import UpdateMembership from "./components/UpdateMembership.jsx";
+import Administrator from "./components/Administrator.jsx";
+import Member from "./components/Member.jsx";
 
 import 'primereact/resources/themes/saga-blue/theme.css';
 import 'primereact/resources/primereact.css';

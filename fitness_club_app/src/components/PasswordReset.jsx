@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
@@ -10,7 +10,6 @@ function PasswordReset() {
 
     const toast = useRef(null);
     const navigate = useNavigate();
-    const { pathname } = useLocation();
 
     const showSuccess = (msg) => {
         toast.current.show({
