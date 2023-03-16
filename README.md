@@ -1,5 +1,3 @@
-Fitness Club Application
-
 Fitness Club Application is a web application designed to store customer test information for future analysis.
 System Requirements
 
