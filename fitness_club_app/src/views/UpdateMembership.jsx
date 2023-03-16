@@ -6,7 +6,7 @@ import { Toast } from 'primereact/toast';
 
 import supabase from '../services/supabase';
 
-function Updatemembership() {
+function UpdateMembership() {
     const toast = useRef(null);
     const navigate = useNavigate();
 
@@ -110,4 +110,4 @@ function Updatemembership() {
         </div>
     );
 }
-export default Updatemembership;
+export default UpdateMembership;

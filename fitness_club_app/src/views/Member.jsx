@@ -6,7 +6,7 @@ import { Toast } from "primereact/toast";
 import supabase from "../services/supabase";
 
 import { useNavigate } from "react-router-dom";
-import ShowMemberInfo from "./Showmemberinfo.jsx";
+import ShowMemberInfo from "./ShowMemberInfo.jsx";
 import Footer from "./Footer.jsx";
 
 function Member() {

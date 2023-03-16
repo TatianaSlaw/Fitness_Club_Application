@@ -4,12 +4,12 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import Header from "./views/Header.jsx";
 import Signup from "./views/Signup.jsx";
 import Login from "./views/Login.jsx";
-import PasswordReset from "./views/Passwordreset.jsx";
+import PasswordReset from "./views/PasswordReset.jsx";
 import Trainer from "./views/Trainer.jsx";
-import AddNewMember from "./views/Addmember.jsx";
+import AddNewMember from "./views/AddMember.jsx";
 import AddTestResults from "./views/AddTestResults"
-import AddOpenHours from "./views/Addopenhours.jsx";
-import Updatemembership from "./views/Updatemembership.jsx";
+import AddOpenHours from "./views/AddOpenHours.jsx";
+import UpdateMembership from "./views/UpdateMembership.jsx";
 import Administrator from "./views/Administrator.jsx";
 import Member from "./views/Member.jsx";
 
@@ -32,7 +32,7 @@ function App() {
                     <Route path="/addnew" element={<AddNewMember />} />
                     <Route path="/addtest" element={<AddTestResults />} />
                     <Route path="/openhours" element={<AddOpenHours />} />
-                    <Route path="/membership" element={<Updatemembership />} />
+                    <Route path="/membership" element={<UpdateMembership />} />
                 <Route path="/member" element={<Member />} />
                 <Route path="/admin" element={<Administrator />} />
         </Routes>

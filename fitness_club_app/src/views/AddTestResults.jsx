@@ -7,7 +7,7 @@ import { Toast } from "primereact/toast";
 
 import supabase from "../services/supabase";
 
-import ShowMemberInfo from "./Showmemberinfo.jsx";
+import ShowMemberInfo from "./ShowMemberInfo.jsx";
 
 function AddTestResults() {
     const [clubNumber, setClubNumber] = useState("");
