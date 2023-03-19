@@ -8,14 +8,12 @@
 The main purpose of this web application is to store test information of club members for later analysis.
 
 This web application is built using React and Vite, two popular front-end development tools that offer fast performance
-and a streamlined developer experience. The application's styles were written using SASS, a popular preprocessor for CSS
-that offers additional features like variables, mixins, and nested rules. The application's frontend also leverages the
-power of PrimeReact, a set of open-source UI components for React that provide a polished and professional user
-interface. The backend is powered by Superbase, an open-source alternative to Firebase that provides a real-time
-database
-and authentication system. With Superbase, the application stores data for registered users, client information,
-and test results in a secure and scalable database. By combining the power of React, Vite, PrimeReact, and Superbase,
-this application delivers a modern and user-friendly experience for fitness club members and trainers alike.
+and a streamlined developer experience. The application's styles were written using SASS. The application's frontend
+also leverages the power of PrimeReact, a set of open-source UI components for React that provide a polished and
+professional user interface. The backend is powered by Superbase, an open-source alternative to Firebase that provides a real-time
+database and authentication system. With Superbase, the application stores data for registered users, client
+information, and test results in a secure and scalable database. By combining the power of React, Vite, PrimeReact, and
+Superbase, this application delivers a modern and user-friendly experience for fitness club members and trainers alike.
 
 #### System Requirements
 
@@ -26,14 +24,18 @@ this application delivers a modern and user-friendly experience for fitness club
 1. Clone this repository to your local machine
 2. Install the required dependencies by running in the project root directory
 
- `$ npm install `
+``` react
+ $ npm install
+```
 
 3. For using application you need to create database in supebase and get API_URL and API_KEY. Configure the application
    by creating a .env file in the project root directory and setting the following variables from superbase:
 
 4. Start the application by running in the project root directory
 
-` $ run dev`
+``` react
+ $ run dev`
+ ```
 
 5. Access the application in your web browser at http://localhost:5173
 6. Bulid your application by running in the project root directory
@@ -50,23 +52,23 @@ To use the application, follow these steps:
 2. Log in to the application using your credentials.
 3. If you log in as Trainer you could:
 
-- choose client by his Club Number and see his member info and previous test results;
-- add client's last test information;
-- add new client;
-- update clients membership details;
-- update club info.
+   - choose client by his Club Number and see his member info and previous test results;
+   - add client's last test information;
+   - add new client;
+   - update clients membership details;
+   - update club info.
 
 4. If you log in as Administrator you could:
 
-- add new client;
-- update clients membership details;
-- update club info.
+   - add new client;
+   - update clients membership details;
+   - update club info.
 
 5. If you log in as Client you could:
 
-- see membership details;
-- see client test results information;
-- see club info.
+   - see membership details;
+   - see client test results information;
+   - see club info.
 
 #### Authors
 
