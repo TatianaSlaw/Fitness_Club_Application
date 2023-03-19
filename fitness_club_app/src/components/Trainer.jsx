@@ -58,9 +58,9 @@ function Trainer() {
     return (
         <div className="main-container">
             <Toast ref={toast} />
-            <h1>
-                Fitness Club Trainer Dashboard
-            </h1>
+            <h2>
+                Trainer Dashboard
+            </h2>
             <div className="p-input-icon-right">
                 <Button onClick={handleAddTestResult}
                         className="btn-primary"
@@ -90,8 +90,8 @@ function Trainer() {
                         className="btn-primary"
                         severity="info"
                         outlined
-                        label="Update info for the coming holidays" />
-                <i className="pi pi-calendar-plus" style={{ fontSize: '1.5rem', color: "#2699f7" }}></i>
+                        label="Update club info" />
+                <i className="pi pi-info-circle" style={{ fontSize: '1.5rem', color: "#2699f7" }}></i>
             </div>
             <div>
                 <Button onClick={handleLogout}

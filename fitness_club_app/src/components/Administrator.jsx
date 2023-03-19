@@ -55,9 +55,9 @@ function Administrator() {
     return (
         <div className="main-container">
             <Toast ref={toast} />
-            <h1>
-                Fitness Club Administrator Dashboard
-            </h1>
+            <h2>
+                Administrator Dashboard
+            </h2>
             <div className="p-input-icon-right">
                 <Button onClick={handleNewMember}
                         className="btn-primary"
@@ -79,8 +79,8 @@ function Administrator() {
                         className="btn-primary"
                         severity="info"
                         outlined
-                        label="Update info for the coming holidays" />
-                <i className="pi pi-calendar-plus" style={{ fontSize: '1.5rem', color: "#2699f7" }}></i>
+                        label="Update club info" />
+                <i className="pi pi-info-circle" style={{ fontSize: '1.5rem', color: "#2699f7" }}></i>
             </div>
             <div>
                 <Button onClick={handleLogout}

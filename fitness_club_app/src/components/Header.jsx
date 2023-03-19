@@ -1,10 +1,11 @@
-import { ReactSVG } from "react-svg";
+import logo from "../assets/logo.svg";
+import React from "react";
 
 function Header() {
 
     return (
-        <div className="main-container">
-            <ReactSVG src="src/assets/logo.svg" />
+        <div className="header-container">
+            <img src={ logo }  alt="Fitness club logo"/>
         </div>
         )
 }

@@ -68,7 +68,7 @@ function AddOpenHours() {
     return (
         <div className="main-container">
             <Toast ref={toast} />
-            <h3>Club Opening Hours for Upcoming Holidays</h3>
+            <h3>Club opening hours for upcoming holidays, sales or other club info</h3>
             {info.map((info) => (
                 <div key={info.id}>
                     {info.open_hours}

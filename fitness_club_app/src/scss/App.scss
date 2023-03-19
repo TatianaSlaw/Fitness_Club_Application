@@ -1,6 +1,18 @@
 @import 'variables';
 
+.header-container {
+  img {
+    width: 30vw;
+    margin: 3vh 0 2vh 0;
+
+    @media only screen and (min-width: 992px) {
+      max-width: 300px;
+    };
+  }
+}
+
 .main-container,
+.header-container,
 .signup-container,
 .signup-form,
 .login-container,
@@ -11,9 +23,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  max-width: 80vw;
 
   h2{
     margin: 1vh 0;
+    padding:0 3px;
+    text-align: center;
   }
 
   .pi {
@@ -133,7 +148,7 @@
 
 .member-info {
   text-align: left;
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: bold;
   color: $primary-color;
   width: 80vw;
@@ -150,7 +165,7 @@
 
   .p-button {
     min-width: 200px;
-    font-size: 1em;
+    font-size: .8rem;
     color: $primary-color;
     text-align: left;
   }
@@ -166,14 +181,13 @@
   .prev_results {
     display: flex;
     align-items: flex-start;
-    //justify-content: flex-end;
     width: 60vw;
     overflow: scroll;
     scroll-snap-type: x mandatory;
     color: $primary-color;
 
     .results_table {
-      font-size: 1.1rem;
+      font-size: 1rem;
       text-align: center;
 
       th {
@@ -192,11 +206,11 @@
       }
 
       th, td {
-        padding: 4.3px 5px 4.3px 5px ;
+        padding: 3px;
         background-clip: padding-box;
         scroll-snap-align: start;
-        min-width: 54px;
-        height: 38px;
+        min-width: 40px;
+        height: 30px;
       }
 
       thead {
@@ -233,7 +247,7 @@
       }
 
       .row_header {
-        min-width: 155px;
+        min-width: 120px;
       }
 
       th.icon-wieght {
@@ -284,14 +298,15 @@
   }
 
   .last_results {
-    max-width: 20vw;
+    max-width: 13vw;
     display: flex;
     flex-direction: column;
     vertical-align: top;
 
     .p-inputtext {
       width: 20vw;
-      height: 40px;
+      height: 32px;
+      font-size: 1rem;
 
       @media only screen and (min-width: 992px) {
         max-width: 200px;
@@ -304,16 +319,16 @@
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
-  font-size: 1.25em;
   align-items: center;
 
   .p-inputtext-lg {
     width: 58vw;
+    font-size: 1em;
   }
 
   .btn-primary {
     margin-left: 10px;
-    height: 48px;
+    height: 42px;
     width: 20vw;
     justify-content: flex-start;
   }
@@ -336,13 +351,14 @@
     color: white;
     padding: 1vw;
     font-weight: normal;
-    font-size: 1.25em;
+    font-size: 1.2em;
   }
 
   span {
     display: flex;
     align-items: center;
     margin: 5px 0;
+    flex-wrap: wrap;
 
     img {
       display: flex;
