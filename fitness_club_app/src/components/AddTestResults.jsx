@@ -989,7 +989,7 @@ function AddTestResults() {
                 <Update changeUpdateRecommendationsVisibility={changeUpdateRecommendationsVisibility}/>
                 {UpdateRecommendationsVisible && <UpdateRecommendations />}
             </div>
-
+            <div className="main-container">
              <h2>Tests Results</h2>
              <div className="results-container">
                 <span className="prev_results">
@@ -1161,7 +1161,7 @@ function AddTestResults() {
             </span>
              </div>
 
-            <div className="main-container">
+
                 <Button onClick={handleNewTest} className="btn-primary" label="ADD NEW TEST RESULTS" type="submit" />
                 <span className="text-center">
                     <a onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>

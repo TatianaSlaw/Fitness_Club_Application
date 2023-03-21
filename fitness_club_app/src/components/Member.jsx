@@ -792,7 +792,7 @@ function Member() {
 
             <h2 className="contact-header">Tests Results</h2>
             <div className="results-container">
-                <span className="prev_results">
+                <span className="prev_results member">
                     <div className="table-container">
                         {results.length > 0 ? renderResultsTable() : null}
                     </div>

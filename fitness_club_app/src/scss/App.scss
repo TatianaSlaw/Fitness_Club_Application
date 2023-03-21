@@ -177,12 +177,13 @@
 
 .results-container {
   display: flex;
+  justify-content: center;
 
   .prev_results {
     display: flex;
     align-items: flex-start;
     justify-content: flex-end;
-    width: 60vw;
+    max-width: 67vw;
     //overflow: scroll;
     //scroll-snap-type: x mandatory;
     color: $primary-color;
@@ -195,6 +196,7 @@
       width: max-content;
       font-size: 1rem;
       text-align: center;
+      border: 1px solid #ced4da;
 
       th {
         background-color: $primary-color;
@@ -310,7 +312,7 @@
     vertical-align: top;
 
     .p-inputtext {
-      width: 20vw;
+      width: 13vw;
       height: 32px;
       font-size: 1rem;
 
@@ -386,6 +388,12 @@
 
 .member-results-main-container {
 
+  .results-container {
+    .prev_results {
+      max-width: 80vw;
+    }
+  }
+
   .club_number_input {
     margin-top: 20px;
     display: flex;
@@ -396,13 +404,6 @@
 
     .p-inputtext-lg {
       width: 80vw;
-    }
-  }
-
-  .results-container {
-    .prev_results {
-      width:  80vw;
-      margin-bottom: 20px;
     }
   }
 
