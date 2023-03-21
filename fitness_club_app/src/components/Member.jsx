@@ -792,9 +792,11 @@ function Member() {
 
             <h2 className="contact-header">Tests Results</h2>
             <div className="results-container">
-                <span className="prev_results " role="region" aria-label="test results table" tabIndex={tabIndex} >
-                {results.length > 0 ? renderResultsTable() : null}
-            </span>
+                <span className="prev_results">
+                    <div className="table-container">
+                        {results.length > 0 ? renderResultsTable() : null}
+                    </div>
+                </span>
             </div>
 
             <Footer />

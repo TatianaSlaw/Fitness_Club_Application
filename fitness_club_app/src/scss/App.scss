@@ -181,12 +181,18 @@
   .prev_results {
     display: flex;
     align-items: flex-start;
+    justify-content: flex-end;
     width: 60vw;
-    overflow: scroll;
-    scroll-snap-type: x mandatory;
+    //overflow: scroll;
+    //scroll-snap-type: x mandatory;
     color: $primary-color;
 
+    .table-container {
+      overflow-x: auto;
+    }
+
     .results_table {
+      width: max-content;
       font-size: 1rem;
       text-align: center;
 

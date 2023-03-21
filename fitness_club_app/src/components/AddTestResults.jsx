@@ -992,9 +992,11 @@ function AddTestResults() {
 
              <h2>Tests Results</h2>
              <div className="results-container">
-                <span className="prev_results " role="region" aria-label="test results table" tabIndex={tabIndex} >
-                {results.length > 0 ? renderResultsTable() : null}
-            </span>
+                <span className="prev_results">
+                    <div className="table-container">
+                        {results.length > 0 ? renderResultsTable() : null}
+                    </div>
+                </span>
                 <span className="last_results">
                 <InputText
                     ref={test_dateRef}

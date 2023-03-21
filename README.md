@@ -69,6 +69,10 @@ To use the application, follow these steps:
    - see membership details;
    - see client test results information;
    - see club info.
+ 
+ DEMO https://fitness-club-application.netlify.app/ 
+ email: client@mail.com or client2@mail.com password: 123456
+
 
 #### Authors
 
