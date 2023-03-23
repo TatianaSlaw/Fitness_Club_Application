@@ -97,7 +97,7 @@ function Signup() {
                     <i className="pi pi-id-card"></i>
                     <InputText
                         className="p-inputtext-lg"
-                        placeholder="Your club number"
+                        placeholder="Your 4 digit club number"
                         maxLength={4}
                         keyfilter="int"
                         ref={clubNumberRef} />

@@ -1,7 +1,9 @@
 import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Dropdown } from 'primereact/dropdown';
+
 import { InputText } from "primereact/inputtext";
+import { Dropdown } from 'primereact/dropdown';
+import { Calendar } from 'primereact/calendar';
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
 
@@ -10,7 +12,7 @@ import supabase from '../services/supabase';
 function UpdateMembership() {
     const toast = useRef(null);
     const navigate = useNavigate();
-
+    const [date, setDate] = useState(null);
     const [selectedMembership, setSelectedMembership] = useState(null);
     const memberships = [
         { name: 'standard' },
@@ -41,8 +43,6 @@ function UpdateMembership() {
         event.preventDefault();
 
         const club_number = club_numberRef.current.value;
-        //const membership = membershipRef.current.value;
-        const membership_end_date = membership_end_dateRef.current.value;
 
         const { data: existingMember } = await supabase
             .from('Clients')
@@ -57,7 +57,7 @@ function UpdateMembership() {
 
         const { data, error } = await supabase
             .from('Clients')
-            .update({ membership: selectedMembership.name, membership_end_date: membership_end_date })
+            .update({ membership: selectedMembership.name, membership_end_date: date })
             .eq('club_number', club_number)
 
 
@@ -72,8 +72,6 @@ function UpdateMembership() {
     };
 
     const club_numberRef = useRef(null);
-    //const membershipRef = useRef(null);
-    const membership_end_dateRef = useRef(null);
 
     return (
         <div className="newmember-container">
@@ -85,7 +83,7 @@ function UpdateMembership() {
                     <span className="p-inputtext-lg">
                         <InputText
                             className="p-inputtext-lg "
-                            placeholder="Club number"
+                            placeholder="4 digit club number"
                             keyfilter="int"
                             maxLength={4}
                             ref={club_numberRef} />
@@ -101,11 +99,8 @@ function UpdateMembership() {
                 <div>
                     <span className="input_label">Membership End Date</span>
                     <span className="p-inputtext-lg">
-                        <InputText
-                            className="p-inputtext-lg"
-                            placeholder="yyyy-mm-dd"
-                            ref={membership_end_dateRef} />
-                </span>
+                        <Calendar value={date} onChange={(e) => setDate(e.value)} dateFormat="dd-mm-yy" />
+                    </span>
                 </div>
                 <Button type="submit" label="UPDATE MEMBERSHIP" className="btn-primary" />
                 <span className="text-center">
