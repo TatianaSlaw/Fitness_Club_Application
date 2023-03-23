@@ -1,7 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { InputText } from "primereact/inputtext";
-import { useTabIndex } from 'react-tabindex';
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 
@@ -89,11 +88,11 @@ function AddTestResults() {
         return (
             <div className="recommendations">
                 <Toast ref={toast} />
-                    <InputText
-                        className="p-inputtext-lg"
-                        placeholder="Recommendations"
-                        ref={recommendationsRef} />
-                    <Button onClick={handleUpdateRecommendations} type="submit" label="UPDATE" className="btn-primary" />
+                <InputText
+                    className="p-inputtext-lg"
+                    placeholder="Recommendations"
+                    ref={recommendationsRef} />
+                <Button onClick={handleUpdateRecommendations} type="submit" label="UPDATE" className="btn-primary" />
             </div>
         )
     }
@@ -157,27 +156,27 @@ function AddTestResults() {
                         })}
                 </tr>
                 <tr>
-                <th className="icon-ruler">Neck</th>
-                {dates
-                    .slice()
-                    .sort((a, b) => new Date(b) - new Date(a))
-                    .map((date, index, array) => {
-                        const result = results.find((r) => r.test_date === date);
-                        let difference = "";
-                        if (index < array.length - 1) {
-                            const nextResult = results.find((r) => r.test_date === array[index + 1]);
-                            if (result && nextResult) {
-                                difference = result.neck - nextResult.neck;
+                    <th className="icon-ruler">Neck</th>
+                    {dates
+                        .slice()
+                        .sort((a, b) => new Date(b) - new Date(a))
+                        .map((date, index, array) => {
+                            const result = results.find((r) => r.test_date === date);
+                            let difference = "";
+                            if (index < array.length - 1) {
+                                const nextResult = results.find((r) => r.test_date === array[index + 1]);
+                                if (result && nextResult) {
+                                    difference = result.neck - nextResult.neck;
+                                }
                             }
-                        }
-                        return [
-                            <td key={date}>{result && result.neck ? result.neck : ""}</td>,
-                            index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
-                                {difference !== null ? Math.abs(difference).toFixed(1) : ""}
-                            </td>
+                            return [
+                                <td key={date}>{result && result.neck ? result.neck : ""}</td>,
+                                index < array.length - 1 && <td key={date + "-difference"} className={difference < 0 ? "negative" : difference > 0 ? "positive" : ""}>
+                                    {difference !== null ? Math.abs(difference).toFixed(1) : ""}
+                                </td>
 
-                        ];
-                    })}
+                            ];
+                        })}
                 </tr>
                 <tr>
                     <th className="icon-ruler">Forearm</th>
@@ -964,7 +963,6 @@ function AddTestResults() {
     const visceral_fatRef = useRef(null);
     const bmiRef = useRef(null);
     const physique_ratingRef = useRef(null);
-    const tabIndex = useTabIndex();
 
     return (
         <div className="results-main-container">
@@ -989,15 +987,16 @@ function AddTestResults() {
                 <Update changeUpdateRecommendationsVisibility={changeUpdateRecommendationsVisibility}/>
                 {UpdateRecommendationsVisible && <UpdateRecommendations />}
             </div>
+            <h2>Tests Results</h2>
             <div className="main-container">
-             <h2>Tests Results</h2>
-             <div className="results-container">
+
+                <div className="results-container">
                 <span className="prev_results">
                     <div className="table-container">
                         {results.length > 0 ? renderResultsTable() : null}
                     </div>
                 </span>
-                <span className="last_results">
+                    <span className="last_results">
                 <InputText
                     ref={test_dateRef}
                     placeholder="yyyy-mm-dd"
@@ -1159,7 +1158,7 @@ function AddTestResults() {
                     placeholder="Physique rating"
                 />
             </span>
-             </div>
+                </div>
 
 
                 <Button onClick={handleNewTest} className="btn-primary" label="ADD NEW TEST RESULTS" type="submit" />

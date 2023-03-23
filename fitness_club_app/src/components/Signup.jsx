@@ -29,6 +29,10 @@ function Signup() {
         });
     };
 
+    const handleLogin = () => {
+        navigate('/');
+    }
+
     const handleSignup = async (event) => {
         event.preventDefault();
 
@@ -125,7 +129,9 @@ function Signup() {
                     className="btn-primary"
                     label="SIGN UP"
                     type="submit" />
-                <span><a href="/">Already have account?</a></span>
+                <Button onClick={handleLogin}
+                        link
+                        label="Already have account?"  />
             </form>
         </div>
     )

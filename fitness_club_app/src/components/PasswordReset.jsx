@@ -28,6 +28,10 @@ function PasswordReset() {
         });
     };
 
+    const handleSignUp = () => {
+        navigate('/signup');
+    }
+
     const handlePasswordReset = async (event) => {
         event.preventDefault();
 
@@ -63,7 +67,9 @@ function PasswordReset() {
                     className="btn-primary"
                     label="RESET PASSWORD"
                     type="submit" />
-                <span><a href="/signup">Haven’t account?</a></span>
+                <Button onClick={handleSignUp}
+                        link
+                        label="Haven’t account?"  />
             </form>
         </div>
     )

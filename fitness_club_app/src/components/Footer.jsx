@@ -42,7 +42,7 @@ function Footer() {
                 <span>Fri 08:00 - 20:00 break 14:00 - 15:00</span>
                 <span>Sat 08:00 - 13:00</span>
 
-                <h2>Сlub Opening Hours for Upcoming Holidays</h2>
+                <h2>Сlub Info</h2>
                     {info.map((info) => (
                         <div key={info.id}>
                             {info.open_hours}

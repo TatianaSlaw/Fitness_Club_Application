@@ -29,6 +29,13 @@ function Login() {
         });
     };
 
+    const handleSignUp = () => {
+        navigate('/signup');
+    }
+
+    const handlePasswordReset = () => {
+        navigate('/reset');
+    }
     const handleLogin = async (event) => {
         event.preventDefault();
 
@@ -94,12 +101,16 @@ function Login() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                 />
-                <span><a href="/reset">Forgot password?</a></span>
+                <Button onClick={handlePasswordReset}
+                        link
+                        label="Forgot password?"/>
                 <Button
                     className="btn-primary"
                     label="LOG IN"
                     type="submit" />
-                <span><a href="/signup">Haven’t account?</a></span>
+                <Button onClick={handleSignUp}
+                        link
+                        label="Haven’t account?"  />
             </form>
         </div>
     )
