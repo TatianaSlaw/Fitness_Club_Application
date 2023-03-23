@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Dropdown } from 'primereact/dropdown';
 import { InputText } from "primereact/inputtext";
 import { Button } from 'primereact/button';
 import { Toast } from 'primereact/toast';
@@ -9,6 +10,15 @@ import supabase from '../services/supabase';
 function UpdateMembership() {
     const toast = useRef(null);
     const navigate = useNavigate();
+
+    const [selectedMembership, setSelectedMembership] = useState(null);
+    const memberships = [
+        { name: 'standard' },
+        { name: 'fixed' },
+        { name: 'unlimited' },
+        { name: 'student' },
+        { name: 'pensioner' }
+    ];
 
     const showSuccess = (msg) => {
         toast.current.show({
@@ -31,7 +41,7 @@ function UpdateMembership() {
         event.preventDefault();
 
         const club_number = club_numberRef.current.value;
-        const membership = membershipRef.current.value;
+        //const membership = membershipRef.current.value;
         const membership_end_date = membership_end_dateRef.current.value;
 
         const { data: existingMember } = await supabase
@@ -47,7 +57,7 @@ function UpdateMembership() {
 
         const { data, error } = await supabase
             .from('Clients')
-            .update({ membership: membership, membership_end_date: membership_end_date })
+            .update({ membership: selectedMembership.name, membership_end_date: membership_end_date })
             .eq('club_number', club_number)
 
 
@@ -62,7 +72,7 @@ function UpdateMembership() {
     };
 
     const club_numberRef = useRef(null);
-    const membershipRef = useRef(null);
+    //const membershipRef = useRef(null);
     const membership_end_dateRef = useRef(null);
 
     return (
@@ -84,10 +94,8 @@ function UpdateMembership() {
                 <div>
                     <span className="input_label">Membership</span>
                     <span className="p-inputtext-lg">
-                    <InputText
-                        className="p-inputtext-lg"
-                        placeholder="Membership"
-                        ref={membershipRef} />
+                    <Dropdown value={selectedMembership} onChange={(e) => setSelectedMembership(e.value)} options={memberships} optionLabel="name"
+                              placeholder="Select a Membership" className="w-full md:w-14rem" />
                 </span>
                 </div>
                 <div>
