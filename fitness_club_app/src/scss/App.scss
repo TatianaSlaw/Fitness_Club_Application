@@ -25,6 +25,10 @@
   align-items: center;
   max-width: 80vw;
 
+  @media only screen and (min-width: 992px) {
+    max-width: 1280px;
+  };
+
   h2{
     margin: 1vh 0;
     padding:0 3px;
@@ -146,7 +150,9 @@
 //---AddTestResults Component---
 
 .results-main-container, .member-results-main-container {
-
+  @media only screen and (min-width: 992px) {
+    max-width: 1280px;
+  };
 }
 
 .member-info {
@@ -187,8 +193,6 @@
     align-items: flex-start;
     justify-content: flex-end;
     max-width: 67vw;
-    //overflow: scroll;
-    //scroll-snap-type: x mandatory;
     color: $primary-color;
 
     .table-container {

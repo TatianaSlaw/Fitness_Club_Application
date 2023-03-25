@@ -999,7 +999,7 @@ function AddTestResults() {
                     <span className="last_results">
                 <InputText
                     ref={test_dateRef}
-                    placeholder="yyyy-mm-dd"
+                    placeholder="dd-mm-yyyy"
                 />
                 <InputText
                     ref={day_mpRef}
