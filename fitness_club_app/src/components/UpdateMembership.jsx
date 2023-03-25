@@ -83,7 +83,7 @@ function UpdateMembership() {
                     <span className="p-inputtext-lg">
                         <InputText
                             className="p-inputtext-lg "
-                            placeholder="4 digit club number"
+                            placeholder="club number"
                             keyfilter="int"
                             maxLength={4}
                             ref={club_numberRef} />
@@ -93,11 +93,11 @@ function UpdateMembership() {
                     <span className="input_label">Membership</span>
                     <span className="p-inputtext-lg">
                     <Dropdown value={selectedMembership} onChange={(e) => setSelectedMembership(e.value)} options={memberships} optionLabel="name"
-                              placeholder="Select a Membership" className="w-full md:w-14rem" />
+                              placeholder="select" className="w-full md:w-14rem" />
                 </span>
                 </div>
                 <div>
-                    <span className="input_label">Membership End Date</span>
+                    <span className="input_label">End Date</span>
                     <span className="p-inputtext-lg">
                         <Calendar value={date} onChange={(e) => setDate(e.value)} dateFormat="dd-mm-yy" />
                     </span>

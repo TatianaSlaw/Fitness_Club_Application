@@ -44,6 +44,7 @@
 
   .p-inputtext {
     width: 80vw;
+    font-size: 1rem;
 
     @media only screen and (min-width: 992px) {
       max-width: 600px;
@@ -95,7 +96,7 @@
   span {
     display: inline-block;
     width: 40vw;
-    font-size: 1.25rem;
+    font-size: 1rem;
     padding: 8px 10px;
     margin: 0;
 
@@ -104,11 +105,18 @@
     };
   }
 
-  .p-inputtext {
+  .md\:w-14rem {
+    width: 100%!important;
+  }
+
+
+  .p-inputtext,.p-dropdown-label, .p-calendar {
+    padding: 8px 0 8px 3px;
     width: 100%;
     margin-left: 0;
+    font-size: 1rem;
 
-    @media only screen and (min-width: 992px) {
+   @media only screen and (min-width: 992px) {
       max-width: 600px;
     };
   }
@@ -330,7 +338,8 @@
 
   .p-inputtext-lg {
     width: 48vw;
-    font-size: 1em;
+    font-size: 1rem;
+
   }
 
   .btn-primary {
@@ -358,7 +367,7 @@
     color: white;
     padding: 1vw;
     font-weight: normal;
-    font-size: 1.2em;
+    font-size: 1.2rem;
   }
 
   span {
@@ -398,11 +407,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    font-size: 1.25em;
+    font-size: 1rem;
     align-items: center;
 
     .p-inputtext-lg {
       width: 80vw;
+      font-size: 1rem;
     }
   }
 

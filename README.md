@@ -34,7 +34,7 @@ Superbase, this application delivers a modern and user-friendly experience for f
 4. Start the application by running in the project root directory
 
 ``` react
- $ run dev`
+ $ run dev
  ```
 
 5. Access the application in your web browser at http://localhost:5173
