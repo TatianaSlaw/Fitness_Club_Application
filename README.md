@@ -10,77 +10,58 @@ The main purpose of this web application is to store test information of club me
 This web application is built using React and Vite, two popular front-end development tools that offer fast performance
 and a streamlined developer experience. The application's styles were written using SASS. The application's frontend
 also leverages the power of PrimeReact, a set of open-source UI components for React that provide a polished and
-professional user interface. The backend is powered by Superbase, an open-source alternative to Firebase that provides a real-time
-database and authentication system. With Superbase, the application stores data for registered users, client
+professional user interface. The backend is powered by Superbase, an open-source alternative to Firebase that provides a
+real-time database and authentication system. With Superbase, the application stores data for registered users, client
 information, and test results in a secure and scalable database. By combining the power of React, Vite, PrimeReact, and
 Superbase, this application delivers a modern and user-friendly experience for fitness club members and trainers alike.
+Netlify is used for deployment.
 
-#### System Requirements
+#### Application features:
 
-- Node.js (version 14 or later)
-
-#### Installation and Configuration
-
-1. Clone this repository to your local machine
-2. Install the required dependencies by running in the project root directory
-
-``` react
- $ npm install
-```
-
-3. For using application you need to create database in supebase and get API_URL and API_KEY. Configure the application
-   by creating a .env file in the project root directory and setting the following variables from superbase:
-
-4. Start the application by running in the project root directory
-
-``` react
- $ run dev
- ```
-
-5. Access the application in your web browser at http://localhost:5173
-6. Bulid your application by running in the project root directory
-
- ``` react
- $ run build
-```
-
-#### Usage
-
-To use the application, follow these steps:
-
-1. Register a new account using your Club Number.
-2. Log in to the application using your credentials.
+1. To register a new account using Clients Club Number.
+2. To log in to the application using credentials.
 3. If you log in as Trainer you could:
 
-   - choose client by his Club Number and see his member info and previous test results;
-   - add client's last test information;
-   - add new client;
-   - update clients membership details;
-   - update club info.
+    - choose client by his Club Number and see his member info and previous test results;
+    - add client's last test information;
+    - add new client;
+    - update clients membership details;
+    - update club info.
 
 4. If you log in as Administrator you could:
 
-   - add new client;
-   - update clients membership details;
-   - update club info.
+    - add new client;
+    - update clients membership details;
+    - update club info (discounts, open hours, etc.)
 
-5. If you log in as Client you could:
+5. If you log in as Client you could see:
 
-   - see membership details;
-   - see client test results information;
-   - see club info.
- 
- DEMO https://fitness-club-application.netlify.app/ 
- email: client@mail.com or client2@mail.com password: 123456
+    - membership details;
+    - test results information;
+    - the difference between tests - progress in trainings.
+    - an increase in weight or volume is displayed in red, and a decrease in green.
+    - information about discounts, and other useful club info;
+    - club hours;
+    - contacts.
 
+The application validates the entered information. For example, if it is measurement data, you cannot enter letters, and
+you cannot enter numbers in the first and last name fields. For the convenience of entering dates, the Calendar
+component is used, and for the phone, an input mask. If you enter a club number, the application will not allow you to
+enter anything other than numbers and will check that there are no less than and no more than 4. If you enter a club
+number as a client, but it is not in the client database, you will receive an error message. You will be able to
+register for one number only once, the next time you try to do this, you will be informed that this number is already
+registered and you need to log in or reset your password.
+The administrator and trainer can add a new client without mail and password. The client himself chooses whether to use
+the application. And for a coach, information is always at hand. He sees the progress of the ward.
 
-#### Authors
+DEMO https://fitness-club-application.netlify.app/
 
-Tatiana Sławecka
+ - client@mail.com or client2@mail.com password: 123456
+ - admin@mail.com password: 123456
+ - trainer@mail.com password: 123456
 
-#### License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
+Please be aware that project is still in progress. If you find any bug or have an idea for improvement, 
+let me know by writing an email > slawecka.t@gmail.com
 
 #### Additional Information:
 

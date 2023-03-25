@@ -1,12 +1,12 @@
 import React, {useRef, useState} from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
-import {InputText} from "primereact/inputtext";
-import {Button} from 'primereact/button';
-import {Toast} from 'primereact/toast';
-import {Dropdown} from 'primereact/dropdown';
-import {Calendar} from 'primereact/calendar';
-import {InputMask} from 'primereact/inputmask';
+import { InputText } from "primereact/inputtext";
+import { Button } from 'primereact/button';
+import { Toast } from 'primereact/toast';
+import { Dropdown } from 'primereact/dropdown';
+import { Calendar } from 'primereact/calendar';
+import { InputMask } from 'primereact/inputmask';
 
 import supabase from '../services/supabase';
 
@@ -18,11 +18,11 @@ function AddNewMember() {
     const [date, setDate] = useState(null);
     const [selectedMembership, setSelectedMembership] = useState(null);
     const memberships = [
-        {name: 'standard'},
-        {name: 'fixed'},
-        {name: 'unlimited'},
-        {name: 'student'},
-        {name: 'pensioner'}
+        { name: 'standard' },
+        { name: 'fixed' },
+        { name: 'unlimited' },
+        { name: 'student' },
+        { name: 'pensioner' }
     ];
 
     const showSuccess = (msg) => {
@@ -50,7 +50,7 @@ function AddNewMember() {
         const surname = surnameRef.current.value;
         const height = heightRef.current.value;
 
-        const {data: existingMember} = await supabase
+        const { data: existingMember } = await supabase
             .from('Clients')
             .select('*')
             .eq('club_number', club_number)
@@ -61,22 +61,10 @@ function AddNewMember() {
             return;
         }
 
-        const {data, error} = await supabase
+        const { data, error } = await supabase
             .from('Clients')
             .insert([
-                {
-                    club_number: club_number,
-                    name: name,
-                    surname: surname,
-                    email: null,
-                    phone: phone,
-                    password: null,
-                    date_bd: dateBD,
-                    height: height,
-                    user_type: "client",
-                    membership: selectedMembership.name,
-                    membership_end_date: date
-                }
+                { club_number: club_number, name: name, surname: surname, email: null, phone: phone, password: null, date_bd: dateBD, height: height, user_type: "client", membership: selectedMembership.name, membership_end_date: date }
             ]);
 
         if (!error) {
@@ -91,13 +79,13 @@ function AddNewMember() {
 
     const club_numberRef = useRef(null);
     const nameRef = useRef(null);
-    const surnameRef = useRef(null);
-    const heightRef = useRef(null);
+    const surnameRef  = useRef(null);
+    const heightRef  = useRef(null);
 
 
     return (
         <div className="newmember-container">
-            <Toast ref={toast}/>
+            <Toast ref={toast} />
             <h2>New club member info</h2>
             <form className="login-form" onSubmit={handleNewMember}>
                 <div>
@@ -108,7 +96,7 @@ function AddNewMember() {
                             placeholder="Club number"
                             keyfilter="int"
                             maxLength={4}
-                            ref={club_numberRef}/>
+                            ref={club_numberRef} />
                     </span>
                 </div>
                 <div>
@@ -118,7 +106,7 @@ function AddNewMember() {
                             className="p-inputtext-lg"
                             keyfilter="alpha"
                             placeholder="First name"
-                            ref={nameRef}/>
+                            ref={nameRef} />
                     </span>
                 </div>
                 <div>
@@ -128,7 +116,7 @@ function AddNewMember() {
                             className="p-inputtext-lg"
                             keyfilter="alpha"
                             placeholder="Last name"
-                            ref={surnameRef}/>
+                            ref={surnameRef} />
                     </span>
                 </div>
                 <div>
@@ -137,7 +125,7 @@ function AddNewMember() {
                          <InputMask value={phone}
                                     onChange={(e) => setPhone(e.target.value)}
                                     mask="999 999 999"
-                                    placeholder="999 999 999"/>
+                                    placeholder="999 999 999" />
                     </span>
                 </div>
                 <div>
@@ -147,7 +135,7 @@ function AddNewMember() {
                                   view="date"
                                   dateFormat="dd-mm-yy"
                                   placeholder="dd-mm-yyyy"
-                                  yearRange="1900:2020"/>
+                                  yearRange="1900:2020" />
 
 
                     </span>
@@ -160,30 +148,29 @@ function AddNewMember() {
                         keyfilter="int"
                         maxLength={3}
                         placeholder="Height (cm)"
-                        ref={heightRef}/>
+                        ref={heightRef} />
                 </span>
                 </div>
                 <div>
                     <span className="input_label">Membership</span>
                     <span className="p-inputtext-lg">
-                    <Dropdown value={selectedMembership} onChange={(e) => setSelectedMembership(e.value)}
-                              options={memberships} optionLabel="name"
-                              placeholder="select" className="w-full"/>
+                    <Dropdown value={selectedMembership} onChange={(e) => setSelectedMembership(e.value)} options={memberships} optionLabel="name"
+                              placeholder="select" className="w-full" />
                 </span>
                 </div>
                 <div>
                     <span className="input_label">End Date</span>
                     <span className="p-inputtext-lg">
                         <Calendar value={date} onChange={(e) => setDate(e.value)}
-                                  dateFormat="dd-mm-yy" placeholder="dd-mm-yyyy"/>
+                                  dateFormat="dd-mm-yy" placeholder="dd-mm-yyyy" />
                     </span>
                 </div>
-                <Button type="submit" label="ADD NEW MEMBER" className="btn-primary"/>
+                <Button type="submit" label="ADD NEW MEMBER" className="btn-primary" />
                 <span className="text-center">
-                    <a onClick={() => navigate(-1)} style={{cursor: 'pointer'}}>
+                    <a onClick={() => navigate(-1)} style={{ cursor: 'pointer' }}>
                         Return to main dashboard
                     </a>
-                    <i className="pi pi-replay" style={{fontSize: '1rem', color: "#2699f7"}}></i>
+                    <i className="pi pi-replay" style={{ fontSize: '1rem', color: "#2699f7" }}></i>
                 </span>
             </form>
         </div>
