@@ -25,7 +25,6 @@ function Administrator() {
         });
     };
 
-
     const handleNewMember = () => {
         navigate('/addnew');
     }

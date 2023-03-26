@@ -20,6 +20,7 @@ function Signup() {
             life: 3000,
         });
     };
+    
     const showError = (msg) => {
         toast.current.show({
             severity: 'error',
@@ -109,24 +110,19 @@ function Signup() {
                         placeholder="Your email"
                         ref={emailRef} />
                 </span>
-                    <Password
-                        className="p-inputtext p-component p-filled p-password-input"
+                <Password className="p-inputtext p-component p-filled p-password-input"
                         placeholder="Password"
                         feedback={false}
                         toggleMask
                         value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <Password
-                        className="p-inputtext p-component p-filled p-password-input"
+                        onChange={(e) => setPassword(e.target.value)}/>
+                <Password className="p-inputtext p-component p-filled p-password-input"
                         placeholder="Reenter password"
                         feedback={false}
                         toggleMask
                         value={password2}
-                        onChange={(e) => setPassword2(e.target.value)}
-                    />
-                <Button
-                    className="btn-primary"
+                        onChange={(e) => setPassword2(e.target.value)}/>
+                <Button className="btn-primary"
                     label="SIGN UP"
                     type="submit" />
                 <Button onClick={handleLogin}

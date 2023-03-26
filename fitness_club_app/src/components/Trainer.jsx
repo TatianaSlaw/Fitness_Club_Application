@@ -29,6 +29,7 @@ function Trainer() {
     const handleAddTestResult = () => {
         navigate('/addtest');
     }
+
     const handleNewMember = () => {
         navigate('/addnew');
     }
@@ -51,10 +52,13 @@ function Trainer() {
         localStorage.removeItem('userData');
         navigate('/')
     }
+
     const [isUserLogged, setUserLogged] = useState(null);
+    
     useEffect(() => {
         setUserLogged(!!localStorage.getItem('user.data'))
     },[])
+
     return (
         <div className="main-container">
             <Toast ref={toast} />

@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
-import { useTabIndex } from 'react-tabindex';
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 
@@ -16,7 +15,6 @@ function Member() {
     const [dates, setDates] = useState([]);
     const toast = useRef(null);
     const navigate = useNavigate();
-    const tabIndex = useTabIndex();
 
     function renderResultsTable() {
         return (
@@ -775,6 +773,7 @@ function Member() {
         localStorage.removeItem('userData');
         navigate('/')
     }
+    
     const [isUserLogged, setUserLogged] = useState(null);
     useEffect(() => {
         setUserLogged(!!localStorage.getItem('user.data'))
@@ -788,6 +787,7 @@ function Member() {
             {errorMessage && (
                 <div style={{ color: "red", marginTop: "8px" }}>{errorMessage}</div>
             )}
+           
             <ShowMemberInfo clubNumber={clubNumber} />
 
             <h2 className="contact-header">Tests Results</h2>

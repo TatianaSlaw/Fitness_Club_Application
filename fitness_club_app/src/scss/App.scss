@@ -1,16 +1,5 @@
 @import 'variables';
 
-.header-container {
-  img {
-    width: 40vw;
-    margin: 3vh 0 2vh 0;
-
-    @media only screen and (min-width: 992px) {
-      max-width: 300px;
-    };
-  }
-}
-
 .main-container,
 .header-container,
 .signup-container,
@@ -95,6 +84,18 @@
   }
 
 }
+
+.header-container {
+  img {
+    width: 40vw;
+    margin: 3vh 0 2vh 0;
+
+    @media only screen and (min-width: 992px) {
+      max-width: 30%;
+    };
+  }
+}
+
 .newmember-container {
 
   span {
@@ -339,7 +340,6 @@
   .p-inputtext-lg {
     width: 48vw;
     font-size: 1rem;
-
   }
 
   .btn-primary {
@@ -352,6 +352,42 @@
   .span {
     line-height: 58px;
   }
+}
+
+.member-results-main-container {
+
+  .results-container {
+    .prev_results {
+      max-width: 80vw;
+    }
+  }
+
+  .club_number_input {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 1rem;
+    align-items: center;
+
+    .p-inputtext-lg {
+      width: 80vw;
+      font-size: 1rem;
+    }
+  }
+
+  .btn-primary {
+    width: 80vw;
+    margin-bottom: 30px;
+    margin-top: 10px;
+  }
+}
+
+.open-hours {
+  width: 80vw;
+  @media only screen and (min-width: 992px) {
+    max-width: 600px;
+  };
 }
 
 .footer-container {
@@ -392,40 +428,4 @@
       align-items: center;
     }
   }
-}
-
-.member-results-main-container {
-
-  .results-container {
-    .prev_results {
-      max-width: 80vw;
-    }
-  }
-
-  .club_number_input {
-    margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    font-size: 1rem;
-    align-items: center;
-
-    .p-inputtext-lg {
-      width: 80vw;
-      font-size: 1rem;
-    }
-  }
-
-  .btn-primary {
-    width: 80vw;
-    margin-bottom: 30px;
-    margin-top: 10px;
-  }
-}
-
-.open-hours {
-  width: 80vw;
-  @media only screen and (min-width: 992px) {
-    max-width: 600px;
-  };
 }
